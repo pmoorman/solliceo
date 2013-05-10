@@ -1,5 +1,11 @@
 Solliceo::Application.routes.draw do
-  devise_for :users
+  resources :viewers
+
+
+  devise_for :users do
+    # Creates viewers as nested resources within users
+    resources :viewers
+  end
 
   root :to => "pages#home"
 

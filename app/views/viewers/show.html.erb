@@ -1,0 +1,42 @@
+<div class="container">
+	<div id="wrapper">
+		
+	</div>
+
+	<!-- Tabs area -->
+	<div class="tabbable span8">
+		<ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">Mijn CV</a></li>
+      <li><a href="#tab2" data-toggle="tab">Motivatiebrief</a></li>
+	  </ul>
+	  <div class="tab-content">
+	    <div id="tab1" class="tab-pane active">
+	        <p>Content of CV</p>
+	    </div>
+	    
+	    <div id="tab2" class="tab-pane">
+				<p>Content of Motivatiebrief</p>
+			</div>
+		
+		</div>
+	</div>
+
+	<!-- Personal summary area -->
+	<div class="span4">
+	</div>
+
+</div>
+
+<p>
+  <b>Company:</b>
+  <%= @viewer.company %>
+</p>
+
+<p>
+  <b>Vacancy:</b>
+  <%= @viewer.vacancy %>
+</p>
+
+
+<%= link_to 'Edit', edit_viewer_path(@viewer) %> |
+<%= link_to 'Back', viewers_path %>

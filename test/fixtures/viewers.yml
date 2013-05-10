@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  company: MyString
+  vacancy: MyString
+
+two:
+  company: MyString
+  vacancy: MyString
