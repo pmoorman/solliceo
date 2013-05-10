@@ -1,40 +1,36 @@
 <div id="toparea">
-	<div class="container">
-		<div style="margin-left:25px;">
-			<img src="#" id="logo"/>
-			<h1>Dashboard</h1>
-		</div>
+	<div style="margin-left:25px;">
+		<img src="#" id="logo"/>
+		<h1>Dashboard</h1>
 	</div>
 </div>
 
-<div class="container" style="box-shadow: 1px 1px 10px #444;border-radius: 5px;">
 
-	<!-- Viewer index area -->
-	<div class="row" style="padding:15px 0 50px 0;">
-		<div class="span4">
-			<button class="btn btn-large btn-primary btn-block" href="#">Create Viewer</button>
-			
-			<div style="margin-top:20px;">
-				<button class="btn btn-small" href="#">Edit all Viewers</button>
-				<button class="btn btn-small pull-right" href="#"><i class="icon-play-circle" style="margin-right:3px;"></i>Add Video</button>
-
-				<div style="margin-top:20px;">
-				<%= link_to "Your Viewers", viewers_path, class: "btn btn-large btn-block" %>
-				</div>
-			</div>
-
-		</div>
-
-		<!-- Small 'open' area -->
-		<div class="span8">
-			<h3>This will be the small marketing / introduction part</h3>
-		</div>
+<!-- Viewer index area -->
+<div class="row" style="padding:15px 0 50px 0;">
+	<div class="span4">
+		<button class="btn btn-large btn-primary btn-block" href="#">Create Viewer</button>
 		
-		<!-- main area -->
-		<div class="span8">
-			<h3>The main area</h3>
-			<p></p>
+		<div style="margin-top:20px;">
+			<button class="btn btn-small" href="#">Edit all Viewers</button>
+			<button class="btn btn-small pull-right" href="#"><i class="icon-play-circle" style="margin-right:3px;"></i>Add Video</button>
+
+			<div style="margin-top:20px;">
+			<%= link_to "Your Viewers", viewers_path, class: "btn btn-large btn-block" %>
+			</div>
 		</div>
 
 	</div>
+
+	<!-- Small 'open' area -->
+	<div class="span8">
+		<h3>This will be the small marketing / introduction part</h3>
+	</div>
+	
+	<!-- main area -->
+	<div class="span8">
+		<h3>The main area</h3>
+		<p></p>
+	</div>
+
 </div>
