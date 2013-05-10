@@ -1,0 +1,15 @@
+<div class="container">
+
+	<% if user_signed_in? %>
+		<div class="footer">
+			<small>
+				<p>footer paragraph  ; )</p>
+			</small>
+		</div>
+	<% else %>
+		<div class="footer">
+			<%= link_to "Powered by Qurriculum", root_path, class: "muted" %>
+		</div>
+	<% end %>
+
+</div>

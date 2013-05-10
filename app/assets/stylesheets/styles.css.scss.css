@@ -1,0 +1,17 @@
+@import 'bootstrap';
+
+body {
+	margin-top: 50px;
+}
+
+.footer {
+	margin-top: 50px;
+}
+
+#toparea {
+	margin-left: 25px;
+
+}
+
+/* Put this at the end, so it renders after page is ready. */
+@import 'bootstrap-responsive';
