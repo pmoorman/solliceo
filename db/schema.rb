@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130510054918) do
+ActiveRecord::Schema.define(:version => 20130510060955) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(:version => 20130510054918) do
     t.string   "vacancy"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
+
+  add_index "viewers", ["user_id"], :name => "index_viewers_on_user_id"
 
 end
