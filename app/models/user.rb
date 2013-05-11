@@ -13,8 +13,10 @@ class User < ActiveRecord::Base
                           content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] },
                           size: { less_than: 5.megabytes }
 
-   # Connects viewers to their respective users. 
+  # Connects viewers to their respective users. 
   # Destroys dependent viewers when user is destroyed
   has_many :viewers, :dependent => :destroy
-  has_attached_file :image, styles: { medium: "200x200"}
+  has_attached_file :image, 
+                      :styles => {medium: "200x200"},
+                      :default_url => '/assets/images/rails.png'
 end

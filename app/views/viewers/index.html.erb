@@ -1,9 +1,10 @@
 <h1>Listing viewers</h1>
 
-<table>
+<table class="table table-striped table-bordered">
   <tr>
     <th>Company</th>
     <th>Vacancy</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,9 +14,10 @@
   <tr>
     <td><%= viewer.company %></td>
     <td><%= viewer.vacancy %></td>
-    <td><%= link_to 'Show', viewer %></td>
+    <td><%= viewer.user.image %></td>
+    <td><%= link_to 'View', viewer %></td>
     <td><%= link_to 'Edit', edit_viewer_path(viewer) %></td>
-    <td><%= link_to 'Destroy', viewer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Delete', viewer, method: :delete, data: { confirm: 'Are you sure? The viewer will be deleted forever.' } %></td>
   </tr>
 <% end %>
 </table>

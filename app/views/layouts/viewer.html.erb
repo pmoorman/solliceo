@@ -5,8 +5,26 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+  <style>
+  	body {
+  		background-color:#d3d3d3;
+  	}
+  	.box {
+  		background-color:#ffffff;
+			box-shadow: 1px 1px 10px #c1c1c1;
+  	}
+  	#firstBox {
+  		text-align: center;
+  		margin:-40px auto 20px auto;
+  	}
+  	#video {
+			box-shadow: 1px 1px 10px #999;
+			margin-top: 20px;
+		}
+  </style>
 </head>
-<body style="background-color:red;">
+<body>
 	<%= render 'layouts/header' %>
 	
 	<div class="row">

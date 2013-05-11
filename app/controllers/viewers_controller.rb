@@ -22,7 +22,7 @@ class ViewersController < ApplicationController
   # GET /viewers/1
   # GET /viewers/1.json
   def show
-    @viewers = Viewer.find(params[:id])
+    @viewer = Viewer.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
