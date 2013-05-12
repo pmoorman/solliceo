@@ -5,6 +5,6 @@ class PagesController < ApplicationController
   def about
   end
 
-  def support
+  def videowizard
   end
 end

@@ -11,7 +11,7 @@ Solliceo::Application.routes.draw do
 
   get 'about' => "pages#about"
 
-  get 'support' => "pages#support"
+  get 'videowizard' => "pages#videowizard"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

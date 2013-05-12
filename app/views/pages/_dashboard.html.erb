@@ -9,11 +9,12 @@
 <!-- Viewer index area -->
 <div class="row" style="padding:15px 0 50px 0;">
 	<div class="span4">
-		<button class="btn btn-large btn-primary btn-block" href="new_viewer_path">Create Viewer</button>
+		<%= link_to 'Create Viewer', new_viewer_path, class: 'btn btn-large btn-primary btn-block' %>
 		
 		<div style="margin-top:20px;">
-			<button class="btn btn-small" href="edit_user_registration_path">Edit all Viewers</button>
-			<button class="btn btn-small pull-right" href="#"><i class="icon-play-circle" style="margin-right:3px;"></i>Add Video</button>
+			<%= link_to 'Edit all Viewers', new_viewer_path, class: 'btn btn-small ' %>
+			<%= link_to 'Add video', videowizard_path, class: 'btn btn-small pull-right' %>
+		</div>
 
 			<div style="margin-top:20px;">
 			<%= link_to "Your Viewers", viewers_path, class: "btn btn-large btn-block" %>
