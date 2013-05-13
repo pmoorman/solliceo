@@ -6,12 +6,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :image
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :image, :videoid
   # attr_accessible :title, :body
 
   validates_attachment :image,
                           content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] },
                           size: { less_than: 5.megabytes }
+
+  #Checks that a default value for video (=0) is set
+  validates :videoid, presence: true
+
 
   # Connects viewers to their respective users. 
   # Destroys dependent viewers when user is destroyed
