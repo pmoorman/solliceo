@@ -8,4 +8,12 @@ ActiveAdmin.register User do
   	column :videoid
   	default_actions #Show 'view', 'edit' and 'delete' options
   end
+
+  form do |f|
+  f.inputs "Details" do
+    f.input :email
+    f.input :videoid
+  end
+  f.buttons
+end
 end
