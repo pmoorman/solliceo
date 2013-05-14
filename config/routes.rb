@@ -1,17 +1,22 @@
 Solliceo::Application.routes.draw do
-  resources :viewers
-
-
-  devise_for :users do
-    # Creates viewers as nested resources within users
-    resources :viewers
-  end
-
   root :to => "pages#home"
 
   get 'about' => "pages#about"
 
   get 'videowizard' => "pages#videowizard"
+
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+  resources :viewers
+
+
+  devise_for :users do
+  ActiveAdmin.routes(self)
+    # Creates viewers as nested resources within users
+    resources :viewers
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
