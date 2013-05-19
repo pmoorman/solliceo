@@ -1,62 +1,88 @@
 <div class="container">
-	<% if current_user == @viewer.user %>
-		<%= link_to 'Edit', edit_viewer_path(@viewer) %> |
-		<%= link_to 'Back', viewers_path %>
-	<% end %>
+		<header>
+			<% if current_user == @viewer.user %>
+				<%= link_to 'Edit', edit_viewer_path(@viewer) %> |
+				<%= link_to 'Back', viewers_path %>
+			<% end %>
 
-	<div class="box" id="firstBox">
-		<iframe id="video" src="http://player.vimeo.com/video/<%= @viewer.user.videoid %>?autoplay=0" width="820" height="458" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-		<div style="margin:auto;">
-			<h3 style="line-height: 115%;">Hallo <%= @viewer.company %>. Mijn naam is <%= @viewer.user.name %>.
-			</br>
-			Ik wil graag onderdeel uitmaken van uw team.</h3>
-		</div>
-		<div class="btn-group" style="margin:auto; margin-bottom: 10px;">
-			<button class="span2 btn btn-large btn-primary" href="#">Contact Nu</button>
-			<button class="span2 btn btn-large btn-block" href="#">Download CV</button>
-		</div>
-	</div>
-
-	<div class="row">
-	
-		<!-- Tabs area -->
-		<div class="box tabbable span9">
-			<ul class="nav nav-tabs">
-	      <li class="active"><a href="#tab1" data-toggle="tab">Mijn CV</a></li>
-	      <li><a href="#tab2" data-toggle="tab">Motivatiebrief</a></li>
-		  </ul>
-		  <div class="tab-content">
-		    <div id="tab1" class="tab-pane active">
-	        <iframe src="https://docs.google.com/gview?url=http://vicancy.com/aanmaken/pdfbestanden/FAQ_versie_1.pdf&embedded=true"></iframe>
-		    </div>
-		    
-		    <div id="tab2" class="tab-pane">
-					<p>Content of Motivatiebrief</p>
-				</div>
-			
+			<div id="video">
+				<iframe id="video-frame" src="http://player.vimeo.com/video/<%= @viewer.user.videoid %>?autoplay=0" width="820" height="420" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 			</div>
-		</div>
 
-		<!-- Personal summary area -->
-		<div class="box span3">
-			<div style="margin:10px;"> <!-- to set margins properly -->
-				<div>
-					<%= image_tag @viewer.user.image(:medium) %>
-				</div>
-				
-				<div>
-					<h3>Contact</h3>
-					<p style="font-size: 110%; line-height:110%;">
-						<%= @viewer.user.name %> </br>
-						<%= @viewer.user.email %> </br>
-						<%= @viewer.user.name %> </br>
-					</p>
-				</div>
+			<div class="buttons">
+
 				<div class="btn-group">
-					<button class="btn btn-primary" href="#">Contact</button>
-					<button class="btn" href="#">Download CV</button>
+					<a class="btn btn-xlarge btn-primary" href="#">Reply</a>
+					<a class="btn btn-xlarge share" href="#">Share</a>
+				</div>
+
+				<div class="share-box">
+					<div class="slide" style="left: -170px;">
+						<span class="st_facebook_large" displaytext="Facebook" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span class="stLarge" style="background-image: url(http://w.sharethis.com/images/facebook_32.png);"></span><img src="http://w.sharethis.com/images/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none;"></span></span>
+						<span class="st_twitter_large" displaytext="Tweet" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span class="stLarge" style="background-image: url(http://w.sharethis.com/images/twitter_32.png);"></span><img src="http://w.sharethis.com/images/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none;"></span></span>
+						<span class="st_linkedin_large" displaytext="LinkedIn" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span class="stLarge" style="background-image: url(http://w.sharethis.com/images/linkedin_32.png);"></span><img src="http://w.sharethis.com/images/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none;"></span></span>
+						<span class="st_email_large" displaytext="Email" st_processed="yes"><span style="text-decoration:none;color:#000000;display:inline-block;cursor:pointer;" class="stButton"><span class="stLarge" style="background-image: url(http://w.sharethis.com/images/email_32.png);"></span><img src="http://w.sharethis.com/images/check-big.png" style="position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; max-width: 19px; max-height: 19px; display: none;"></span></span>
+					</div>
 				</div>
 			</div>
+
+			<a href="#" class="powered-by">Powered by Vicancy</a>
+		</header>
+
+		<div class="content">
+			<div class="left">
+
+				<ul class="nav tabs">
+					<li class="active"><a href="#tab1" data-toggle="tab">Mijn CV</a></li>
+					<li><a href="#tab2" data-toggle="tab">Motivatiebrief</a></li>
+					<% for file in @viewer.file_uploads %>
+						<li><a href="#file-<%= file.id %>" data-toggle="tab"><%= file.name %></a></li>
+					<% end %>
+				</ul>
+				<div id="content">
+					<div class="tab-content">
+						<div id="tab1" class="tab-pane active">
+							<iframe src="https://docs.google.com/gview?url=http://vicancy.com/aanmaken/pdfbestanden/FAQ_versie_1.pdf&embedded=true"></iframe>
+						</div>
+
+						<div id="tab2" class="tab-pane">
+							<p>Content of Motivatiebrief</p>
+						</div>
+						<% for file in @viewer.file_uploads %>
+							<div id="file-<%= file.id %>" class="tab-pane">
+								<%= file.file_file_name %>
+							</div>
+						<% end %>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="right">
+				<div class="company">
+					<div style="margin:10px;"> <!-- to set margins properly -->
+						<% unless @viewer.user.image.blank? %>
+						<div>
+							<%= image_tag @viewer.user.image(:medium) %>
+						</div>
+						<% end %>
+						
+						<div>
+							<h3>Contact</h3>
+							<p style=" line-height:110%;">
+								<%= @viewer.user.name %> </br>
+								<%= @viewer.user.email %> </br>
+								<%= @viewer.user.name %> </br>
+							</p>
+						</div>
+						<div class="btn-group">
+							<button class="btn btn-primary" href="#">Contact</button>
+							<button class="btn" href="#">Download CV</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			
 		</div>
 	</div>
-</div>

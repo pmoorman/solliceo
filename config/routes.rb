@@ -1,5 +1,5 @@
 Solliceo::Application.routes.draw do
-  root :to => "pages#home"
+  root :to => "viewers#index"
 
   get 'about' => "pages#about"
 
@@ -9,8 +9,9 @@ Solliceo::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :viewers
-
+  resources :viewers do
+    resources :files, except: [:index]
+  end
 
   devise_for :users do
   ActiveAdmin.routes(self)
