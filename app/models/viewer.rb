@@ -7,4 +7,5 @@ class Viewer < ActiveRecord::Base
   # Connects viewers to their respective user
   belongs_to :user
   has_attached_file :resume
+  has_many :file_uploads
 end

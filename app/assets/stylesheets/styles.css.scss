@@ -162,7 +162,6 @@ a.powered-by {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	padding: 10px;
-
 }
 
 #content {
@@ -195,6 +194,7 @@ a.powered-by {
 			&:after { border-left-color: #EEE !important; }
 		}
 		a{padding: 0 25px;color: #585858;}
+		&:not(.active){border-left: 1px solid #CCC;}
 		&.active {
 			background: #fff;
 			height: 40px;

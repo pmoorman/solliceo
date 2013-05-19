@@ -10,7 +10,7 @@ Solliceo::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :viewers do
-    resources :files  
+    resources :files, except: [:index]
   end
 
   devise_for :users do

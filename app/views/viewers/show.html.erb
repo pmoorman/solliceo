@@ -35,6 +35,9 @@
 				<ul class="nav tabs">
 					<li class="active"><a href="#tab1" data-toggle="tab">Mijn CV</a></li>
 					<li><a href="#tab2" data-toggle="tab">Motivatiebrief</a></li>
+					<% for file in @viewer.file_uploads %>
+						<li><a href="#file-<%= file.id %>" data-toggle="tab"><%= file.name %></a></li>
+					<% end %>
 				</ul>
 				<div id="content">
 					<div class="tab-content">
@@ -45,6 +48,11 @@
 						<div id="tab2" class="tab-pane">
 							<p>Content of Motivatiebrief</p>
 						</div>
+						<% for file in @viewer.file_uploads %>
+							<div id="file-<%= file.id %>" class="tab-pane">
+								<%= file.file_file_name %>
+							</div>
+						<% end %>
 					</div>
 				</div>
 
@@ -61,7 +69,7 @@
 						
 						<div>
 							<h3>Contact</h3>
-							<p style="font-size: 110%; line-height:110%;">
+							<p style=" line-height:110%;">
 								<%= @viewer.user.name %> </br>
 								<%= @viewer.user.email %> </br>
 								<%= @viewer.user.name %> </br>
