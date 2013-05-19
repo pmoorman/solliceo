@@ -10,6 +10,7 @@ class ViewersController < ApplicationController
 
 
   def index
+    render and return unless current_user
     # Only show user's own viewers in the index
     @viewers = current_user.viewers.all
 
