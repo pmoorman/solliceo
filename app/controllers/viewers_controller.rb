@@ -1,3 +1,6 @@
+require 'rexml/document'
+require 'open-uri'
+
 class ViewersController < ApplicationController
   # GET /viewers
   # GET /viewers.json
@@ -24,6 +27,12 @@ class ViewersController < ApplicationController
   # GET /viewers/1.json
   def show
     @viewer = Viewer.find(params[:id])
+    @thumbnail = nil
+    begin
+      doc = REXML::Document.new(open("http://vimeo.com/api/v2/video/#{@viewer.user.videoid.to_i}.xml").read)
+      doc.elements.each('/videos/video/thumbnail_small') { |element| p element; @thumbnail = element.get_text }
+    rescue
+    end
 
     respond_to do |format|
       format.html # show.html.erb
