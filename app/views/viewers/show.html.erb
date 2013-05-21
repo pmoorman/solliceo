@@ -14,7 +14,7 @@
 			<% end %>
 
 			<div id="video">
-				<iframe id="video-frame" src="http://player.vimeo.com/video/<%= @viewer.user.videoid %>?autoplay=0" width="820" height="420" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+				<iframe id="video-frame" src="http://player.vimeo.com/video/<%= @viewer.user.videoid %>?autoplay=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 			</div>
 
 			<div class="buttons">
@@ -38,16 +38,15 @@
 		</header>
 
 		<div class="content">
-			<div class="left">
-
-				<ul class="nav tabs">
-					<li class="active"><a href="#tab1" data-toggle="tab">Mijn CV</a></li>
-					<li><a href="#tab2" data-toggle="tab">Motivatiebrief</a></li>
-					<% for file in @viewer.file_uploads %>
-						<li><a href="#file-<%= file.id %>" data-toggle="tab"><%= file.name %></a></li>
-					<% end %>
-				</ul>
-				<div id="content">
+			<div class="row-fluid">
+				<div id="content" class="span8">
+					<ul class="nav tabs">
+						<li class="active"><a href="#tab1" data-toggle="tab">Mijn CV</a></li>
+						<li><a href="#tab2" data-toggle="tab">Motivatiebrief</a></li>
+						<% for file in @viewer.file_uploads %>
+							<li><a href="#file-<%= file.id %>" data-toggle="tab"><%= file.name %></a></li>
+						<% end %>
+					</ul>
 					<div class="tab-content">
 						<div id="tab1" class="tab-pane active">
 							<iframe src="https://docs.google.com/gview?url=http://vicancy.com/aanmaken/pdfbestanden/FAQ_versie_1.pdf&embedded=true"></iframe>
@@ -58,38 +57,39 @@
 						</div>
 						<% for file in @viewer.file_uploads %>
 							<div id="file-<%= file.id %>" class="tab-pane">
-								<%= file.file_file_name %>
+								<%= file.file_file_name %> | 
+								<%= file.file.url %>
 							</div>
 						<% end %>
 					</div>
 				</div>
-
-			</div>
-
-			<div class="right">
-				<div class="company">
-					<div style="margin:10px;"> <!-- to set margins properly -->
-						<% unless @viewer.user.image.blank? %>
-						<div>
-							<%= image_tag @viewer.user.image(:medium) %>
-						</div>
-						<% end %>
-						
-						<div>
-							<h3>Contact</h3>
-							<p style=" line-height:110%;">
-								<%= @viewer.user.name %> </br>
-								<%= @viewer.user.email %> </br>
-								<%= @viewer.user.name %> </br>
-							</p>
-						</div>
-						<div class="btn-group">
-							<button class="btn btn-primary" href="#">Contact</button>
-							<button class="btn" href="#">Download CV</button>
+				<div class="span4" id="contact-area">
+					<div class="company">
+						<div style="margin:10px;"> <!-- to set margins properly -->
+							<% unless @viewer.user.image.blank? %>
+							<div>
+								<%= image_tag @viewer.user.image(:medium) %>
+							</div>
+							<% end %>
+							
+							<div>
+								<h3>Contact</h3>
+								<p style=" line-height:110%;">
+									<%= @viewer.user.name %> </br>
+									<%= @viewer.user.email %> </br>
+									<%= @viewer.user.name %> </br>
+								</p>
+							</div>
+							<div class="btn-group">
+								<button class="btn btn-primary" href="#">Contact</button>
+								<button class="btn" href="#">Download CV</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			
 
 			
 		</div>
