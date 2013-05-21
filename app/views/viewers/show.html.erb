@@ -1,3 +1,11 @@
+<%= content_for :meta do %>
+	<meta property="og:image" content="<%= @thumbnail %>"/>
+	<meta property="og:video" content="http://vimeo.com/moogaloop.swf?clip_id=<%= @viewer.user.videoid %>&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00ADEF&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" />
+	<meta property="og:video:height" content="360" />
+	<meta property="og:video:width" content="640" />
+	<meta property="og:video:type" content="application/x-shockwave-flash" />
+<% end %>
+
 <div class="container">
 		<header>
 			<% if current_user == @viewer.user %>
