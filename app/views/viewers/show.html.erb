@@ -57,7 +57,8 @@
 						</div>
 						<% for file in @viewer.file_uploads %>
 							<div id="file-<%= file.id %>" class="tab-pane">
-								<%= file.file_file_name %>
+								<%= file.file_file_name %> | 
+								<%= file.file.url %>
 							</div>
 						<% end %>
 					</div>
