@@ -28,6 +28,8 @@ class ViewersController < ApplicationController
   def show
     @viewer = Viewer.find(params[:id])
     @thumbnail = nil
+    # getting video thumbnail image url for sharing:
+    # vimeo API returns xml document:
     begin
       doc = REXML::Document.new(open("http://vimeo.com/api/v2/video/#{@viewer.user.videoid.to_i}.xml").read)
       doc.elements.each('/videos/video/thumbnail_small') { |element| p element; @thumbnail = element.get_text }
