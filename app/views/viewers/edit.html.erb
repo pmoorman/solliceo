@@ -3,23 +3,6 @@
 
 	<%= render 'form' %>
 
-	<div class="files-list">
-		<ul>
-			<% if !@viewer.file_uploads.blank? %>
-			  <% for file in @viewer.file_uploads %>
-			    <li>
-			    	<%= link_to "Edit", edit_viewer_file_path(@viewer, file) %> | 
-			    	<%= link_to "Remove", viewer_file_path(@viewer, file), method: :delete, confirm: "Are you sure?" %>
-			    	<strong><%= file.name %></strong>
-			    	<%= file.file_file_name %>
-			    </li>
-			  <% end %>
-			<% else %>
-			  No files attached
-			<% end %>
-		</ul>
-		<%= link_to "New file", new_viewer_file_path(@viewer), class: "btn" %>
-	</div>
 
 	<%= link_to 'Show', @viewer %> |
 	<%= link_to 'Back', viewers_path %>

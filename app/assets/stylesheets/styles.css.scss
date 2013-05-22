@@ -183,14 +183,14 @@ a.powered-by {
 		padding: 0;
 		margin: 0;
 		height: 30px;
-		background: #F7F7F7;
+		background: #EEE;
 		line-height: 30px;
 		position: relative;
 		top: 10px;
 		float: left;
 		&:hover{
-			a{background-color: #EEE;}
-			&:after { border-left-color: #EEE !important; }
+			a{background-color: #F7F7F7;}
+			&:after { border-left-color: #F7F7F7 !important; }
 		}
 		a{padding: 0 25px;color: #585858;}
 		&:not(.active){border-left: 1px solid #CCC;}
@@ -216,7 +216,7 @@ a.powered-by {
 			height: 0px;
 			border-style: solid;
 			border-width: 30px 0 0 15px;
-			border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #F7F7F7;
+			border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #EEE;
 			position: absolute;
 			z-index: 0;
 			right: -15px;
