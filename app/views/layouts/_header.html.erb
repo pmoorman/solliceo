@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+    	<div class="row">
+  			<div class="span8 offset2">
+      		<%= link_to "Solliceo", root_path, class: "brand" %>
+      		<ul class="nav">
+        		<li><%= link_to "Home", root_path %></li>
+        		<li><%= link_to "About Us", about_path %></li>
+        	</ul>
+        	<ul class="nav pull-right">
+            <li><%= link_to "Account", edit_user_registration_path %></li>	
+      		  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+      		</ul>
+      	</div>
+      </div>
+    </div>
+  </div>
+<% else # don't show header, because they visit the qurriculums! %>
+<% end %>

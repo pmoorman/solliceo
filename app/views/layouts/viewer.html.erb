@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Viewer for (...import company name)</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield :meta %>
+
+  <style>
+  	body {
+  		background-color:#d3d3d3;
+  	}
+  	.box {
+  		background-color:#ffffff;
+			box-shadow: 1px 1px 10px #c1c1c1;
+  	}
+  	#firstBox {
+  		text-align: center;
+  		margin:-40px auto 20px auto;
+  	}
+  	#video {
+			/*box-shadow: 1px 1px 10px #999;*/
+			/*margin-top: 20px;*/
+		}
+    .tab-content iframe {
+      display: block;
+      min-width: 96%;
+      min-height: 500px;
+      margin: auto;
+      margin-bottom: 15px;
+      box-shadow: 1px 1px 10px #c1c1c1;
+      border: 0px none transparent;
+    }
+  </style>
+</head>
+<body>
+	<%= render 'layouts/header' %>
+	
+	<div class="row">
+		<div class="span8 offset2">
+			<% flash.each do |name, msg| %>
+				<%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+			<% end %>
+		</div>
+	</div>	
+
+	<%= yield %>
+
+
+	<!-- <%= render 'layouts/footer' %> -->
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<%= simple_form_for(@viewer, html: { class: "form-horizontal"}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :company %>
+    <%= f.input :vacancy %>
+    <%= f.input :resume, label: "Upload your Resume (pdf)" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

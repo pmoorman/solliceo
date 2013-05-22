@@ -1,0 +1,46 @@
+<% if user_signed_in? %>
+
+	<%= render 'dashboard' %>
+
+<% else %>
+
+	<%= render 'landingpage' %>
+
+<% end %>
+<div id="toparea">
+	<div style="margin-left:25px;">
+		<img src="#" id="logo"/>
+		<h1>Dashboard</h1>
+	</div>
+</div>
+
+
+<!-- Viewer index area -->
+<div class="row" style="padding:15px 0 50px 0;">
+	<div class="span4">
+		<%= link_to 'Create Viewer', new_viewer_path, class: 'btn btn-large btn-primary btn-block' %>
+		
+		<div style="margin-top:20px;">
+			<%= link_to 'Edit all Viewers', new_viewer_path, class: 'btn btn-small ' %>
+			<%= link_to 'Add video', videowizard_path, class: 'btn btn-small pull-right' %>
+		</div>
+
+			<div style="margin-top:20px;">
+			<%= link_to "Your Viewers", viewers_path, class: "btn btn-large btn-block" %>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Small 'open' area -->
+	<div class="span8">
+		<h3>This will be the small marketing / introduction part</h3>
+	</div>
+	
+	<!-- main area -->
+	<div class="span8">
+		<h3>The main area</h3>
+		<p></p>
+	</div>
+
+</div>
