@@ -28,6 +28,8 @@ class ViewersController < ApplicationController
   def show
     @viewer = Viewer.find(params[:id])
     @thumbnail = nil
+    # getting video thumbnail image url for sharing:
+    # vimeo API returns xml document:
     begin
       doc = REXML::Document.new(open("http://vimeo.com/api/v2/video/#{@viewer.user.videoid.to_i}.xml").read)
       doc.elements.each('/videos/video/thumbnail_small') { |element| p element; @thumbnail = element.get_text }
@@ -44,7 +46,7 @@ class ViewersController < ApplicationController
   # GET /viewers/new.json
   def new
     @viewer = current_user.viewers.new
-
+    4.times{ @viewer.file_uploads.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @viewer }
@@ -54,6 +56,7 @@ class ViewersController < ApplicationController
   # GET /viewers/1/edit
   def edit
     @viewer = current_user.viewers.find(params[:id])
+    (4 - @viewer.file_uploads.count).times{ @viewer.file_uploads.build }
   end
 
   # POST /viewers
@@ -66,7 +69,11 @@ class ViewersController < ApplicationController
         format.html { redirect_to @viewer, notice: 'Viewer was successfully created.' }
         format.json { render json: @viewer, status: :created, location: @viewer }
       else
-        format.html { render action: "new" }
+        format.html { 
+          @empty_count = 4 - @viewer.file_uploads.to_a.count
+          @empty_count.times{ @viewer.file_uploads.build }
+          render action: "new" 
+        }
         format.json { render json: @viewer.errors, status: :unprocessable_entity }
       end
     end
