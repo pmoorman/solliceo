@@ -32,8 +32,8 @@ class ViewersController < ApplicationController
     # vimeo API returns xml document:
     begin
       doc = REXML::Document.new(open("http://vimeo.com/api/v2/video/#{@viewer.user.videoid.to_i}.xml").read)
-      doc.elements.each('/videos/video/thumbnail_small') { |element| p element; @thumbnail = element.get_text }
-    rescue
+      doc.elements.each('/videos/video/thumbnail_small') { |element| @thumbnail = element.get_text }
+    rescue #some error occurred while making request to Vimeo API. Do nothing
     end
 
     respond_to do |format|
