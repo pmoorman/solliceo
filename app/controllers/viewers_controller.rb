@@ -100,3 +100,82 @@ class ViewersController < ApplicationController
     end
   end
 end
+    # getting video thumbnail image url for sharing:
+    # vimeo API returns xml document:
+    begin
+      doc = REXML::Document.new(open("http://vimeo.com/api/v2/video/#{@viewer.user.videoid.to_i}.xml").read)
+      doc.elements.each('/videos/video/thumbnail_small') { |element| p element; @thumbnail = element.get_text }
+    rescue
+    end
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @viewer }
+    end
+  end
+
+  # GET /viewers/new
+  # GET /viewers/new.json
+  def new
+    @viewer = current_user.viewers.new
+    4.times{ @viewer.file_uploads.build }
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @viewer }
+    end
+  end
+
+  # GET /viewers/1/edit
+  def edit
+    @viewer = current_user.viewers.find(params[:id])
+    (4 - @viewer.file_uploads.count).times{ @viewer.file_uploads.build }
+  end
+
+  # POST /viewers
+  # POST /viewers.json
+  def create
+    @viewer = current_user.viewers.new(params[:viewer])
+
+    respond_to do |format|
+      if @viewer.save
+        format.html { redirect_to @viewer, notice: 'Viewer was successfully created.' }
+        format.json { render json: @viewer, status: :created, location: @viewer }
+      else
+        format.html { 
+          @empty_count = 4 - @viewer.file_uploads.to_a.count
+          @empty_count.times{ @viewer.file_uploads.build }
+          render action: "new" 
+        }
+        format.json { render json: @viewer.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /viewers/1
+  # PUT /viewers/1.json
+  def update
+    @viewer = current_user.viewers.find(params[:id])
+
+    respond_to do |format|
+      if @viewer.update_attributes(params[:viewer])
+        format.html { redirect_to @viewer, notice: 'Viewer was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @viewer.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /viewers/1
+  # DELETE /viewers/1.json
+  def destroy
+    @viewer = current_user.viewers.find(params[:id])
+    @viewer.destroy
+
+    respond_to do |format|
+      format.html { redirect_to viewers_url }
+      format.json { head :no_content }
+    end
+  end
+end
