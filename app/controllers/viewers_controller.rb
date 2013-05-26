@@ -89,7 +89,11 @@ class ViewersController < ApplicationController
         format.html { redirect_to @viewer, notice: 'Viewer was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { 
+          @empty_count = 4 - @viewer.file_uploads.to_a.count
+          @empty_count.times{ @viewer.file_uploads.build }
+          render action: "edit" 
+        }
         format.json { render json: @viewer.errors, status: :unprocessable_entity }
       end
     end
