@@ -1,14 +1,13 @@
 <%= simple_form_for(@viewer, html: { class: "form-horizontal", multipart: true}) do |f| %>
     <%= @viewer.errors.full_messages.to_sentence %>
 
-  <div class="form-inputs">
-    <%= f.input :company %>
-    <%= f.input :vacancy %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
-  </div>
+	<div class="form-inputs">
+		<%= f.input :company %>
+		<%= f.input :vacancy %>
+	</div>
+	
+	<hr>
+	<p>You can upload up to 4 files (*.psd/*.doc):</p>
 
 	<div class="files-list">
 		<ul>
@@ -17,7 +16,7 @@
 			    	<% if file_upload.new_record? %>
 			    		<%= f.fields_for :file_uploads, file_upload do |fu| %>
 							<div class="form-inputs">
-								<%= fu.text_field :name %>
+								<%= fu.text_field :name, placeholder: "Enter file name" %>
 								<%= fu.file_field :file %>
 							</div>
 						<% end %>
@@ -32,5 +31,9 @@
 			
 		</ul>
 		<%#= link_to "New file", new_viewer_file_path(@viewer), class: "btn" %>
+	</div>
+
+	<div class="form-actions">
+		<%= f.button :submit, class: "btn btn-primary" %>
 	</div>
 <% end %>
