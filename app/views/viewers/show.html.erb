@@ -4,6 +4,7 @@
 	<meta property="og:video:height" content="360" />
 	<meta property="og:video:width" content="640" />
 	<meta property="og:video:type" content="application/x-shockwave-flash" />
+	<meta name="Description" content="<%= "Hallo #{@viewer.company}. Mijn naam is #{@viewer.user.name}. Ik wil graag onderdeel uitmaken van uw team." %>"><!-- meta description for search engines and social sharing -->
 <% end %>
 
 <div class="container">
@@ -20,8 +21,8 @@
 		  Ik wil graag onderdeel uitmaken van uw team.</h3>
 		</div>
 		<div class="btn-group" style="margin:auto; margin-bottom: 10px;">
-		  <button class="span2 btn btn-large btn-primary" href="#">Contact Nu</button>
-		  <button class="span2 btn btn-large btn-block" href="#">Download CV</button>
+		  <button class="span2 btn btn-large btn-primary">Contact Nu</button>
+		  <button class="span2 btn btn-large btn-block" data-target="#attached-files-modal" data-toggle="modal">Download CV</button>
 		</div>
 	</div>
 
@@ -69,4 +70,20 @@
 		</div>
 
 	</div>
+</div>
+ 
+<!-- Modal -->
+<div id="attached-files-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Viewer files:</h3>
+  </div>
+  <div class="modal-body">
+    <% @viewer.file_uploads.each_with_index do |file, i|  %>
+		<p style="padding-left: 15px;"><%= link_to "#{file.name}(#{file.file_file_name})", file.file.url, target: '_blank' %></p>
+	<% end %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
 </div>
