@@ -1,15 +1,45 @@
-<div class="container">
+<% if user_signed_in? %>
+	<footer class="footer">
+ 	 	<div class="container">
+    	<div class="row-fluid">
+      	<div class="span6 offset3">
+          <p>
+	          <%= link_to "Solliceo", root_path %> wordt ontwikkeld door <a href="https://vimeo.com/groups/profeo">Loet Rammelsberg</a> en <a href="https://vimeo.com/groups/profeo">Pieter Moorman</a>.
+	          <br> 
+	          Voor meer informatie neem direct contact op met <a href="mailto:loet@solliceo.com">loet@solliceo.com</a>.
+          </p>	     
+	        <ul class="footer-links">
+	          <li><%= link_to "Solliceo", root_path %></li>
+	          <li class="muted">&middot;</li>
+	          <li><a href="http://vicancy.com/" target="_blank">Vicancy</a></li>
+	          <li class="muted">&middot;</li>
+	          <li><a href="https://vimeo.com/groups/profeo/videos/66645854" target="_blank">Compeo</a></li>
+	        </ul>
+      	</div>
+    	</div>
+  	</div>
+	</footer>
 
-	<% if user_signed_in? %>
-		<div class="footer">
-			<small>
-				<p>footer paragraph  ; )</p>
-			</small>
-		</div>
-	<% else %>
-		<div class="footer">
-			<%= link_to "Powered by Qurriculum", root_path, class: "muted" %>
-		</div>
-	<% end %>
 
-</div>
+<% else %>
+	<footer class="footer">
+ 	 	<div class="container">
+    	<div class="row-fluid">
+      	<div class="span6 offset3">
+          <p><%= link_to "Solliceo", root_path %> wordt ontwikkeld door <a href="https://vimeo.com/groups/profeo">Loet Rammelsberg</a> 
+              en <a href="https://vimeo.com/groups/profeo">Pieter Moorman</a>.<br> Voor meer informatie 
+              neem direct contact op met <a href="mailto:loet@solliceo.com">loet@solliceo.com</a>.	     
+	        <ul class="footer-links">
+	          <li><%= link_to "Solliceo", root_path %></li>
+	          <li class="muted">&middot;</li>
+	          <li><a href="http://vicancy.com/" target="_blank">Vicancy</a></li>
+	          <li class="muted">&middot;</li>
+	          <li><a href="https://vimeo.com/groups/profeo/videos/66645854" target="_blank">Compeo</a></li>
+	        </ul>
+      	</div>
+    	</div>
+  	</div>
+	</footer>
+
+
+<% end %>
