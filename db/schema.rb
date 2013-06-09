@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523193628) do
+ActiveRecord::Schema.define(:version => 20130609144432) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -75,6 +75,11 @@ ActiveRecord::Schema.define(:version => 20130523193628) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.decimal  "videoid",                :default => 0.0
+    t.string   "phone"
+    t.string   "string"
+    t.string   "linkedin"
+    t.string   "twitter"
+    t.string   "residence"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

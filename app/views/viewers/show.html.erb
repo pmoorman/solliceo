@@ -57,7 +57,30 @@
 							<p style=" line-height:110%;">
 								<%= @viewer.user.name %> </br>
 								<%= @viewer.user.email %> </br>
-								<%= @viewer.user.name %> </br>
+
+								<% unless @viewer.user.phone.blank? %>
+									<div>
+										<%= @viewer.user.phone %> </br>
+									</div>
+								<% end %>
+
+								<% unless @viewer.user.linkedin.blank? %>
+									<div>
+										<%= @viewer.user.linkedin %> </br>
+									</div>
+								<% end %>
+								
+								<% unless @viewer.user.twitter.blank? %>
+									<div>
+										<%= @viewer.user.twitter %> </br>
+									</div>
+								<% end %>
+
+								<% unless @viewer.user.residence.blank? %>
+									<div>
+										<%= @viewer.user.residence %> </br>
+									</div>
+								<% end %>
 							</p>
 						</div>
 						<div class="btn-group">

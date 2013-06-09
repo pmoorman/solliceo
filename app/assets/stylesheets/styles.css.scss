@@ -190,10 +190,6 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 
 }
 
-/* Put this at the end, so it renders after page is ready. */
-@import 'bootstrap-responsive';
-
-
 .wrapper {
 	width: 960px;
 	margin: 0 auto;
