@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :image, :videoid, :phone, :linkedin, :twitter, :residence
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :image, :image_remote_url, :videoid, :phone, :linkedin, :twitter, :residence
   # attr_accessible :title, :body
 
   validates_attachment :image,
@@ -23,4 +23,10 @@ class User < ActiveRecord::Base
   has_attached_file :image, 
                       :styles => {medium: "200x200"},
                       :default_url => '/assets/images/rails.png'
+
+  def image_remote_url=(url_value)
+    self.image = URI.parse(url_value) unless url_value.blank?
+    super
+  end
+  
 end
