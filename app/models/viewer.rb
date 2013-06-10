@@ -1,7 +1,7 @@
 class Viewer < ActiveRecord::Base
   attr_accessible :company, :vacancy, :resume, :file_uploads, :file_uploads_attributes
 
-  validates :company, :vacancy, :user, presence: true
+  validates :company, :user, presence: true
   # validates_attachment :resume, content_type: { content_type: %w(application/pdf resume/pdf) }
 
   # Connects viewers to their respective user
