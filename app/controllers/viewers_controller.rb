@@ -26,19 +26,24 @@ class ViewersController < ApplicationController
   # GET /viewers/1
   # GET /viewers/1.json
   def show
-    @viewer = Viewer.find(params[:id])
-    @thumbnail = nil
-    # getting video thumbnail image url for sharing:
-    # vimeo API returns xml document:
-    begin
-      doc = REXML::Document.new(open("http://vimeo.com/api/v2/video/#{@viewer.user.videoid.to_i}.xml").read)
-      doc.elements.each('/videos/video/thumbnail_small') { |element| @thumbnail = element.get_text }
-    rescue #some error occurred while making request to Vimeo API. Do nothing
-    end
+    user = User.find_by_subdomain(request.subdomain)
+    if user && params[:id]
+      @viewer = Viewer.find(params[:id])
+      @thumbnail = nil
+      # getting video thumbnail image url for sharing:
+      # vimeo API returns xml document:
+      begin
+        doc = REXML::Document.new(open("http://vimeo.com/api/v2/video/#{@viewer.user.videoid.to_i}.xml").read)
+        doc.elements.each('/videos/video/thumbnail_small') { |element| @thumbnail = element.get_text }
+      rescue #some error occurred while making request to Vimeo API. Do nothing
+      end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @viewer }
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @viewer }
+      end
+    else
+      redirect_to root_url(subdomain: 'www')
     end
   end
 
@@ -46,7 +51,7 @@ class ViewersController < ApplicationController
   # GET /viewers/new.json
   def new
     @viewer = current_user.viewers.new
-    4.times{ @viewer.file_uploads.build }
+    4.times { @viewer.file_uploads.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @viewer }
@@ -56,7 +61,7 @@ class ViewersController < ApplicationController
   # GET /viewers/1/edit
   def edit
     @viewer = current_user.viewers.find(params[:id])
-    (4 - @viewer.file_uploads.count).times{ @viewer.file_uploads.build }
+    (4 - @viewer.file_uploads.count).times { @viewer.file_uploads.build }
   end
 
   # POST /viewers
@@ -69,10 +74,10 @@ class ViewersController < ApplicationController
         format.html { redirect_to @viewer, notice: 'Viewer was successfully created.' }
         format.json { render json: @viewer, status: :created, location: @viewer }
       else
-        format.html { 
+        format.html {
           @empty_count = 4 - @viewer.file_uploads.to_a.count
-          @empty_count.times{ @viewer.file_uploads.build }
-          render action: "new" 
+          @empty_count.times { @viewer.file_uploads.build }
+          render action: "new"
         }
         format.json { render json: @viewer.errors, status: :unprocessable_entity }
       end
@@ -89,10 +94,10 @@ class ViewersController < ApplicationController
         format.html { redirect_to @viewer, notice: 'Viewer was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { 
+        format.html {
           @empty_count = 4 - @viewer.file_uploads.to_a.count
-          @empty_count.times{ @viewer.file_uploads.build }
-          render action: "edit" 
+          @empty_count.times { @viewer.file_uploads.build }
+          render action: "edit"
         }
         format.json { render json: @viewer.errors, status: :unprocessable_entity }
       end
