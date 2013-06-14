@@ -5,7 +5,7 @@ Solliceo::Application.routes.draw do
   # viewers short urls in subdomains
   constraints subdomain: /.+/ do
     match '/' => 'viewers#show'
-    resources :viewers, only: [:show], path: '', as: :viewer_direct
+    resources :viewers, only: [:show], path: '', as: :viewer_short_override
   end
 
   get 'about' => "pages#about"
