@@ -2,7 +2,7 @@
     <div class="row-fluid">
         <div class="white-box span12">
             <h1>Send your application!</h1>
-            <%= render 'form' %>
+            <%= render partial: 'form', locals: {application: @application} %>
         </div>
     </div>
 </div>

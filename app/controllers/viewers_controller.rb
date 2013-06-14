@@ -60,6 +60,7 @@ class ViewersController < ApplicationController
 
   # GET /viewers/1/edit
   def edit
+    @application = Application.new(current_user)
     @viewer = current_user.viewers.find(params[:id])
     (4 - @viewer.file_uploads.count).times { @viewer.file_uploads.build }
   end

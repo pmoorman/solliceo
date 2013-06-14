@@ -9,7 +9,7 @@ gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'activeadmin'
 gem 'sass-rails',   '~> 3.2.3'
-
+gem 'mandrill-api'
 group :production do
 	gem 'pg'
 end

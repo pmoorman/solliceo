@@ -4,6 +4,10 @@ class Application
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
+  # templates
+  TEXT_TEMPLATE = 'Please, enter your text here'
+  HTML_TEMPLATE = '<h1>Resume</h1>Please, enter your text here'
+
   # attributes and validations
   attr_accessor :emails, :subject, :text_body, :html_body, :from
   validates_presence_of :emails, :subject, :from
@@ -11,7 +15,11 @@ class Application
   validates :text_body, with: :check_body_presence
 
   # accept params hash in Application.new
-  def initialize(attributes = {})
+  def initialize(user, attributes = {})
+    self.from = user.email
+    self.subject = "#{user.name} resume"
+    self.text_body = TEXT_TEMPLATE
+    self.html_body = HTML_TEMPLATE
     self.emails = ''
     attributes.each do |name, value|
       send("#{name}=", value)

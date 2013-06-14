@@ -68,17 +68,17 @@ Solliceo::Application.configure do
   # In production, :host should be set to the actual host of your application.
   # we need to put real settings here!
   config.action_mailer.default_url_options = {:host => 'solliceo.com'}
-  # Mandrill options
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      :address => "smtp.mandrillapp.com",
-      :port => 587, # ports 25, 587 and 2525 are also supported with STARTTLS
-      :enable_starttls_auto => true, # detects and uses STARTTLS
-      :user_name => ENV["MANDRILL_USERNAME"],
-      :password => ENV["MANDRILL_USERNAME"], # SMTP password is any valid API key
-      :authentication => 'login', # Mandrill supports 'plain' or 'login'
-      :domain => 'solliceo.com', # your domain to identify your server when connecting
-  }
+  # Mandrill options no more needed, since mandrill is used via api
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {
+  #    :address => "smtp.mandrillapp.com",
+  #    :port => 587, # ports 25, 587 and 2525 are also supported with STARTTLS
+  #    :enable_starttls_auto => true, # detects and uses STARTTLS
+  #    :user_name => ENV["MANDRILL_USERNAME"],
+  #    :password => ENV["MANDRILL_USERNAME"], # SMTP password is any valid API key
+  #    :authentication => 'login', # Mandrill supports 'plain' or 'login'
+  #    :domain => 'solliceo.com', # your domain to identify your server when connecting
+  #}
 
   # Configuring Amazon S3 for paperclip file upload
   config.paperclip_defaults = {

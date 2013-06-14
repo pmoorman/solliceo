@@ -1,33 +1,42 @@
 <div class="container">
-	<div class="row-fluid">
+    <div class="row-fluid">
 
-		<div class="white-box span12">
-			<div class="span6">
-				<h1>Editing viewer</h1>
+        <div class="white-box span12">
+            <div class="span6">
+                <h1>Editing viewer</h1>
 
-				<%= render 'form' %>
+                <%= render 'form' %>
 
 
-				<%= link_to 'Apply now', new_application_path %> |
-				<%= link_to 'Show', @viewer %> |
-				<%= link_to 'Back', viewers_path %>
-			</div>
+                <%= link_to 'Apply now', '#application_form', data: {toggle: 'modal'} %> |
+                <%= link_to 'Show', @viewer %> |
+                <%= link_to 'Back', viewers_path %>
+            </div>
 
-			<div class="span6">
+            <div class="span6">
 
-			</div>
+            </div>
 
-		</div>
-	</div>
+        </div>
+    </div>
 
-	<div class="row-fluid">
-		<div class="span12">
-		
-			<!-- render show#viewer -->	
-			<!-- <iframe src=""></iframe> -->
-		
-		</div>
+    <div class="row-fluid">
+        <div class="span12">
 
-	</div>
+            <!-- render show#viewer -->
+            <!-- <iframe src=""></iframe> -->
+
+        </div>
+
+    </div>
 </div>
 
+<div class="modal hide" id="application_form">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Send Application</h3>
+    </div>
+    <div class="modal-body">
+        <%= render partial: 'applications/form', locals: {application: @application} %>
+    </div>
+</div>
