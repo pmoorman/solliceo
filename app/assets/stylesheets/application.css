@@ -11,4 +11,5 @@
  *= require_self
  *= require pages
  *= require styles
+ *= require bootstrap-wysihtml5
  */
