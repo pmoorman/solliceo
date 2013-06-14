@@ -1,5 +1,12 @@
 Solliceo::Application.routes.draw do
-  root :to => "viewers#index"
+  # only match  www subdomain here
+  match '/' => 'viewers#index', :constraints => { :subdomain => 'www' }
+
+  # viewers short urls in subdomains
+  constraints subdomain: /.+/ do
+    match '/' => 'viewers#show'
+    resources :viewers, only: [:show], path: '', as: :viewer_short_override
+  end
 
   get 'about' => "pages#about"
 
@@ -19,6 +26,8 @@ Solliceo::Application.routes.draw do
     resources :viewers
   end
 
+  # user applications
+  resources :applications, only: [:new, :create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

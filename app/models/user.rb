@@ -28,5 +28,12 @@ class User < ActiveRecord::Base
     self.image = URI.parse(url_value) unless url_value.blank?
     super
   end
-  
+
+  def subdomain
+    self.name.gsub(/[^A-Za-z_]/, '').downcase
+  end
+
+  def self.find_by_subdomain(subdomain)
+    find { |user| return user if user.subdomain == subdomain }
+  end
 end

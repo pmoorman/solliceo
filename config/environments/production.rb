@@ -5,7 +5,7 @@ Solliceo::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
@@ -66,15 +66,27 @@ Solliceo::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # In production, :host should be set to the actual host of your application.
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  # we need to put real settings here!
+  config.action_mailer.default_url_options = {:host => 'solliceo.com'}
+  # Mandrill options no more needed, since mandrill is used via api
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {
+  #    :address => "smtp.mandrillapp.com",
+  #    :port => 587, # ports 25, 587 and 2525 are also supported with STARTTLS
+  #    :enable_starttls_auto => true, # detects and uses STARTTLS
+  #    :user_name => ENV["MANDRILL_USERNAME"],
+  #    :password => ENV["MANDRILL_USERNAME"], # SMTP password is any valid API key
+  #    :authentication => 'login', # Mandrill supports 'plain' or 'login'
+  #    :domain => 'solliceo.com', # your domain to identify your server when connecting
+  #}
 
   # Configuring Amazon S3 for paperclip file upload
   config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => ENV['AWS_BUCKET'],
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => ENV['AWS_BUCKET'],
+          :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+          :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      }
   }
-}
 end

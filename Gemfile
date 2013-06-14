@@ -2,13 +2,14 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'devise'
 gem 'simple_form'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'activeadmin'
 gem 'sass-rails',   '~> 3.2.3'
-
+gem 'mandrill-api'
 group :production do
 	gem 'pg'
 end
@@ -20,8 +21,8 @@ end
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass', '~> 2.3.1.0'
 end
+gem 'bootstrap-sass', '~> 2.3.1.0'
 
 
 
