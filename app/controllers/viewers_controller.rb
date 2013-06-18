@@ -26,8 +26,8 @@ class ViewersController < ApplicationController
   # GET /viewers/1
   # GET /viewers/1.json
   def show
-    user = User.find_by_subdomain(request.subdomain)
-    if user && params[:id]
+    #user = User.find_by_subdomain(request.subdomain)
+    #if user && params[:id]
       @viewer = Viewer.find(params[:id])
       @thumbnail = nil
       # getting video thumbnail image url for sharing:
@@ -42,9 +42,9 @@ class ViewersController < ApplicationController
         format.html # show.html.erb
         format.json { render json: @viewer }
       end
-    else
-      redirect_to root_url(subdomain: 'www')
-    end
+    #else
+    #  redirect_to root_url(subdomain: 'www')
+    #end
   end
 
   # GET /viewers/new
