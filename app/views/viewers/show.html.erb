@@ -31,7 +31,7 @@
         		</li>
         	</ul>
         	<ul class="nav pull-right">
-      		  <li><%= link_to "Apply to Job" %></li>
+      		  <li><%= link_to "Apply to Job", '#application_form', data: {toggle: 'modal'} %></li>
             <li><%= link_to "Share" %></li>	
       		</ul>
 	      </div>
@@ -217,4 +217,14 @@
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
+</div>
+
+<div class="modal hide" id="application_form">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Send Application</h3>
+    </div>
+    <div class="modal-body">
+        <%= render partial: 'applications/form', locals: {application: @application} %>
+    </div>
 </div>

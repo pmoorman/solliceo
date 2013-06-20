@@ -8,7 +8,6 @@
                 <%= render 'form' %>
 
 
-                <%= link_to 'Apply now', '#application_form', data: {toggle: 'modal'} %> |
                 <%= link_to 'Show', @viewer %> |
                 <%= link_to 'Back', viewers_path %>
             </div>
@@ -28,15 +27,5 @@
 
         </div>
 
-    </div>
-</div>
-
-<div class="modal hide" id="application_form">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3>Send Application</h3>
-    </div>
-    <div class="modal-body">
-        <%= render partial: 'applications/form', locals: {application: @application} %>
     </div>
 </div>
