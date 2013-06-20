@@ -1,12 +1,12 @@
 Solliceo::Application.routes.draw do
   # only match  www subdomain here
-  match '/' => 'viewers#index', :constraints => { :subdomain => 'www' }
+  match '/' => 'viewers#index'#, :constraints => { :subdomain => 'www' }
 
   # viewers short urls in subdomains
-#  constraints subdomain: /.+/ do
-#    match '/' => 'viewers#show'
-#    resources :viewers, only: [:show], path: '', as: :viewer_short_override
-#  end
+  #constraints subdomain: /.+/ do
+  #  match '/' => 'viewers#show'
+  #  resources :viewers, only: [:show], path: '', as: :viewer_short_override
+  #end
 
   get 'about' => "pages#about"
 
