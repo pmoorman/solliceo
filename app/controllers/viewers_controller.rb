@@ -28,6 +28,7 @@ class ViewersController < ApplicationController
   def show
     #user = User.find_by_subdomain(request.subdomain)
     #if user && params[:id]
+      @application = Application.new(current_user)
       @viewer = Viewer.find(params[:id])
       @thumbnail = nil
       # getting video thumbnail image url for sharing:
@@ -60,7 +61,6 @@ class ViewersController < ApplicationController
 
   # GET /viewers/1/edit
   def edit
-    @application = Application.new(current_user)
     @viewer = current_user.viewers.find(params[:id])
     (4 - @viewer.file_uploads.count).times { @viewer.file_uploads.build }
   end
