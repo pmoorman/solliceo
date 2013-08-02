@@ -28,7 +28,7 @@ class ViewersController < ApplicationController
   def show
     user = User.find_by_subdomain(request.subdomain)
     if user && params[:id]
-      @application = Application.new(current_user)
+      @application = Application.new(user)
       @viewer = Viewer.find(params[:id])
       @thumbnail = nil
       # getting video thumbnail image url for sharing:
