@@ -1,5 +1,5 @@
 Solliceo::Application.routes.draw do
-  root to: 'viewers#index'
+  #root to: 'viewers#index'
 
   # only match  www subdomain here
   match '/' => 'viewers#index', :constraints => { :subdomain => 'www' }
