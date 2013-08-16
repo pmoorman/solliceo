@@ -24,3 +24,6 @@ doc/
 # Ignore Paperclip uploaded files
 /public/system
 /public/uploaded_files/
+
+# Ignore database config file
+/config/database.yml

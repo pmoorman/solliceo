@@ -1,4 +1,6 @@
 Solliceo::Application.routes.draw do
+  root to: 'viewers#index'
+
   # only match  www subdomain here
   match '/' => 'viewers#index', :constraints => { :subdomain => 'www' }
 
@@ -20,7 +22,7 @@ Solliceo::Application.routes.draw do
     resources :files, except: [:index]
   end
 
-  devise_for :users do
+  devise_for :users, :controllers => {:registrations => 'registrations'} do
   ActiveAdmin.routes(self)
     # Creates viewers as nested resources within users
     resources :viewers

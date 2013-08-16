@@ -18,6 +18,8 @@ end
 
 group :development, :test do
 	gem 'sqlite3'
+	#gem 'mysql2'
+	gem 'awesome_print'
 end
 
 group :assets do
