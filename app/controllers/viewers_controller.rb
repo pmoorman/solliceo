@@ -44,7 +44,7 @@ class ViewersController < ApplicationController
         format.json { render json: @viewer }
       end
     else
-      redirect_to root_url(subdomain: 'www')
+      redirect_to root_url
     end
   end
 
