@@ -26,8 +26,8 @@ class ViewersController < ApplicationController
   # GET /viewers/1
   # GET /viewers/1.json
   def show
-    user = User.find_by_subdomain(request.subdomain)
-    if user && params[:id]
+    user = User.find_by_subdomain(request.subdomain) || current_user
+    if params[:id]
       @application = Application.new(user)
       @viewer = Viewer.find(params[:id])
       @thumbnail = nil
