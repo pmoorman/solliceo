@@ -25,11 +25,11 @@ class ApplicationMailer
       ip_pool = "Main Pool"
       result = mandrill.messages.send_template params, message, async, ip_pool
       result.map {|r| "#{r['email']}: #{r['status']}"}.to_sentence
-    rescue Mandrill::Error => e
+    #rescue Mandrill::Error => e
       # Mandrill errors are thrown as exceptions
-      puts "A mandrill error occurred: #{e.class} - #{e.message}"
+    #  puts "A mandrill error occurred: #{e.class} - #{e.message}"
       # A mandrill error occurred: Mandrill::InvalidKeyError - Invalid API key
-      raise
+    #  raise
     end
   end
 end
