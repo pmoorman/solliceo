@@ -7,11 +7,12 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'devise'
 gem 'simple_form'
-gem 'paperclip', '3.4.2'
+gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
 gem 'activeadmin'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'mandrill-api'
+gem 'httpi', '~> 2.1.0'
 group :production do
 	gem 'pg'
 end
