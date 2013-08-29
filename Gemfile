@@ -14,12 +14,12 @@ gem 'sass-rails',   '~> 3.2.3'
 gem 'mandrill-api'
 gem 'httpi', '~> 2.1.0'
 group :production do
-	#gem 'pg'
+	gem 'pg'
 end
 
 group :development, :test do
-	#gem 'sqlite3'
-	gem 'mysql2'
+	gem 'sqlite3'
+	#gem 'mysql2'
 	gem 'awesome_print'
 end
 
