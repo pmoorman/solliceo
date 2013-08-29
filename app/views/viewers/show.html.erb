@@ -6,37 +6,37 @@
 	<meta property="og:video:type" content="application/x-shockwave-flash" />
 	<meta name="Description" content="<%= "Hallo #{@viewer.company}. Mijn naam is #{@viewer.user.name}. Ik wil graag onderdeel uitmaken van uw team." %>"><!-- meta description for search engines and social sharing -->
 <% end %>
-	
+	<% if current_user == @viewer.user %>
 	<!-- Edit modus -->
-	  <div class="navbar navbar-fixed-top navbar-inverse">
-	    <div class="navbar-inner">
-	    	<div class="container">
-  			
-      		<%= link_to "Solliceo", root_path, class: "brand" %>
-      		<ul class="nav">
-        		<li><%= link_to "Dashboard", root_path %></li>
-        		<li class="dropdown">
-        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        				Edit
-        				<span class="caret"></span>
-        			</a>
-         			<ul class="dropdown-menu">
-        				<li><a data-target="#contact-modal" data-toggle="modal">Edit Video</a></li>
-        				<li><a data-target="#edit-files-modal" data-toggle="modal">Edit Files</a></li>
-        				<li><a data-target="#edit-contact-modal">Edit Contact Info</a></li>
-        				<li class="divider"></li>
-        				<li><a href="#">Account settings</a></li>
-        			</ul>
-        		</li>
-        	</ul>
-        	<ul class="nav pull-right">
-      		  <li><%= link_to "Apply to Job", '#application_form', data: {toggle: 'modal', viewer: @viewer} %></li>
-            <li><%= link_to "Share" %></li>	
-      		</ul>
-	      </div>
-	    </div>
-  	</div>
-
+	  	<div class="navbar navbar-fixed-top navbar-inverse">
+		    <div class="navbar-inner">
+		    	<div class="container">
+	  			
+	      		<%= link_to "Solliceo", root_path, class: "brand" %>
+	      		<ul class="nav">
+	        		<li><%= link_to "Dashboard", root_path %></li>
+	        		<li class="dropdown">
+	        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	        				Edit
+	        				<span class="caret"></span>
+	        			</a>
+	         			<ul class="dropdown-menu">
+	        				<li><a data-target="#contact-modal" data-toggle="modal">Edit Video</a></li>
+	        				<li><a data-target="#edit-files-modal" data-toggle="modal">Edit Files</a></li>
+	        				<li><a data-target="#edit-contact-modal">Edit Contact Info</a></li>
+	        				<li class="divider"></li>
+	        				<li><a href="#">Account settings</a></li>
+	        			</ul>
+	        		</li>
+	        	</ul>
+	        	<ul class="nav pull-right">
+	      		  <li><%= link_to "Apply to Job", '#application_form', data: {toggle: 'modal', viewer: @viewer} %></li>
+	            <li><%= link_to "Share" %></li>	
+	      		</ul>
+		      </div>
+		    </div>
+	  	</div>
+	<% end %>
 <!--
 		<%= link_to 'Edit', edit_viewer_path(@viewer) %> |
 		<%= link_to 'Back', viewers_path %>
@@ -223,6 +223,8 @@
         <h3>Send Application</h3>
     </div>
     <div class="modal-body">
-        <%= render partial: 'applications/form', locals: {application: @application, viewer: @viewer} %>
+    	<% if current_user %>
+        	<%= render partial: 'applications/form', locals: {application: @application, viewer: @viewer} %>
+        <% end %>
     </div>
 </div>

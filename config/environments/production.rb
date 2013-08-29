@@ -67,7 +67,7 @@ Solliceo::Application.configure do
 
   # In production, :host should be set to the actual host of your application.
   # we need to put real settings here!
-  config.action_mailer.default_url_options = {:host => 'solliceo.com/'}
+  config.action_mailer.default_url_options = {:host => 'solliceo.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
