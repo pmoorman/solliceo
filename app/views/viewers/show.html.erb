@@ -30,7 +30,7 @@
         		</li>
         	</ul>
         	<ul class="nav pull-right">
-      		  <li><%= link_to "Apply to Job", '#application_form', data: {toggle: 'modal'} %></li>
+      		  <li><%= link_to "Apply to Job", '#application_form', data: {toggle: 'modal', viewer: @viewer} %></li>
             <li><%= link_to "Share" %></li>	
       		</ul>
 	      </div>
@@ -223,6 +223,6 @@
         <h3>Send Application</h3>
     </div>
     <div class="modal-body">
-        <%= render partial: 'applications/form', locals: {application: @application} %>
+        <%= render partial: 'applications/form', locals: {application: @application, viewer: @viewer} %>
     </div>
 </div>

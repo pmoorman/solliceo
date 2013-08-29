@@ -1,6 +1,7 @@
 <div class="row-fluid">
     <%= simple_form_for(application, remote: true, html: {class: "form-vertical"}) do |f| %>
         <%= application.errors.full_messages.to_sentence %>
+        <%= hidden_field_tag :viewer, viewer.id %>
         <%= hidden_field_tag :return_url, params[:return_url] || request.referrer %>
         <%= f.input :emails, label: 'To', input_html: {class: 'span12', placeholder: 'info@company1.com, resume@company2.com'} %>
         <%= f.input :from, label: 'From', input_html: {class: 'span12'} %>        

@@ -27,9 +27,9 @@ class ViewersController < ApplicationController
   # GET /viewers/1.json
   def show
     user = User.find_by_subdomain(request.subdomain) || current_user
-    if params[:id]
-      @application = Application.new(user)
+    if params[:id]      
       @viewer = Viewer.find(params[:id])
+      @application = Application.new(user)
       @thumbnail = nil
       # getting video thumbnail image url for sharing:
       # vimeo API returns xml document:
