@@ -1,69 +1,33 @@
 <% if user_signed_in? %>
 
-  <div class="container"> 
-    <div id="pagehead">
-      <img src="/images/logo_solliceo_transparent.png" style="width:200px; height:100%;"/>
-      <h1>Dashboard</h1>
-    </div>
-    
-    <div class="row-fluid">
-      <div class="span4 well">
-        <a href="/viewers" class="btn btn-large btn-block">Maak nu jouw video</a>
+  <div class="main-section">
+    <div class="w-container container">
+      <div class="w-row">
+        <div class="w-col w-col-4">
+          <div class="w-clearfix dashboard">
+            <div class="dashboard-whitebox">
+              <h2>Dashboard</h2>
 
-        <h3>Listing viewers</h3>
-        <table class="table table-bordered" style="background-color:#f5f5f5;">
-          <tr>
-            <th>Bedrijf</th>
-            <th>Vacature</th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
+              <% @viewers.each do |viewer| %>
+            
+                <h4><%= viewer.company %> - <%= viewer.vacancy %> | <%= link_to 'Edit', edit_viewer_path(viewer) %> <%= link_to 'Delete', viewer, method: :delete, data: { confirm: 'Are you sure? The viewer will be deleted forever.' } %></h4>
 
-          <% @viewers.each do |viewer| %>
-          <tr>
-            <td><%= viewer.company %></td>
-            <td><%= viewer.vacancy %></td>
-            <td><%= link_to 'Bekijk', viewer %></td>
-            <td><%= link_to 'Edit', edit_viewer_path(viewer) %></td>
-            <td><%= link_to 'Delete', viewer, method: :delete, data: { confirm: 'Are you sure? The viewer will be deleted forever.' } %></td>
-          </tr>
-          <% end %>
-        </table>
+            </div>
+            
+            <a class="button button-secondary button-left" href="#" target="_self">Q</a>
+            <%= link_to 'Add New Viewer', new_viewer_path, class: 'button button-main' %>
+            <a class="button button-right button-secondary" href="#">B</a>
 
-        <%= link_to 'New Viewer', new_viewer_path, class: 'btn btn-large btn-inverse' %>
-
-      </div>
-
-      <div class="span8">
-
-        <!-- small marketing area -->
-        <div class="well">
-          <h4>Getting started: Solliceo for dummies</h4>
-          <ol>
-            <li>Create your first <em><strong><%= link_to 'viewer', new_viewer_path %></strong></em></li>
-            <li>Add <em><strong><%= link_to 'video', videowizard_path %></strong></em> to your account</li>
-            <li>Apply & Relax!</li>
-          </ol>
+          </div>
         </div>
-
-        <!-- general area -->
-        <div class="well">
-          <h4>Sleek marketing copy</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sollicitudin elementum accumsan. Pellentesque id nulla sed leo bibendum scelerisque. Suspendisse vel eros arcu, eu rutrum lectus. Cras fermentum varius commodo. Praesent dictum volutpat vestibulum. Sed in elit a nunc egestas fermentum. Duis eget nunc et purus rutrum elementum. Nulla sem diam, dapibus tempus mollis non, consectetur vitae justo. Donec mi arcu, adipiscing nec iaculis sed, porttitor a enim. 
-          </br></br>
-            Donec augue mauris, scelerisque porttitor tincidunt quis, dapibus ut tortor. Sed id massa at dui varius interdum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis laoreet dui ac enim dictum non cursus odio convallis. Donec aliquam imperdiet varius. 
-          </br></br>
-            Pellentesque non lacus quis mi porttitor rutrum quis id turpis. Sed in justo non arcu blandit molestie mollis ac nibh. In scelerisque enim leo. Fusce at sem nec purus dignissim lobortis tempor vel dui. Cras eu est a turpis dignissim sollicitudin sed non diam. Cras convallis sem in quam auctor lacinia. Curabitur elementum mattis odio, cursus congue dui tempor vitae. Aenean mattis lobortis tincidunt. 
-          </p>
+        <div class="w-col w-col-8">
+          <h1 class="w-hidden-medium w-hidden-small w-hidden-tiny">Powerfull features, simplified</h1>
+          <h3 class="w-hidden-medium w-hidden-small w-hidden-tiny">Landing your dream job? It's possible now</h3>
         </div>
-
       </div>
-
     </div>
-
-  </div>    
+  </div>
+  <div class="footer"></div>  
 
 <% else %>
 
