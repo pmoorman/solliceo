@@ -10,13 +10,16 @@
 
               <% @viewers.each do |viewer| %>
             
-                <h4><%= viewer.company %> - <%= viewer.vacancy %> | <%= link_to 'Edit', edit_viewer_path(viewer) %> <%= link_to 'Delete', viewer, method: :delete, data: { confirm: 'Are you sure? The viewer will be deleted forever.' } %></h4>
+                <h4><%= viewer.company %> - <%= viewer.vacancy %> | <span class="pull-right"><%= link_to '<a href="#" data-toggle="tooltip" title="Bewerk deze sollicitatie"><i class="icon-wrench"></i></a>'.html_safe, edit_viewer_path(viewer) %> <%= link_to '<a href="#" data-toggle="tooltip" title="Verwijder deze sollicitatie"><i class="icon-trash"></i></a>'.html_safe, viewer, method: :delete, data: { confirm: 'Are you sure? The viewer will be deleted forever.' } %></span></h4>
+              <% end %>
 
             </div>
             
-            <a class="button button-secondary button-left" href="#" target="_self">Q</a>
-            <%= link_to 'Add New Viewer', new_viewer_path, class: 'button button-main' %>
-            <a class="button button-right button-secondary" href="#">B</a>
+            <%= link_to '<i class="icon-user" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, edit_user_registration_path, class: 'button button-secondary button-left', title: 'Jouw Account', rel: 'tooltip' %>
+
+            <%= link_to 'Nieuwe Sollicitatie', new_viewer_path, class: 'button button-main' %>
+            
+            <a class="button button-right button-secondary" href="http://vicancy.com/solliceo/formulier/" target="_blank"data-toggle="tooltip" title="Video aanmaken"><i class="icon-film" style="margin-left:-5px; margin-top:-1px;"></i></a>
 
           </div>
         </div>
@@ -26,8 +29,7 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="footer"></div>  
+  </div> 
 
 <% else %>
 
