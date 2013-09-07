@@ -239,5 +239,6 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
   # Secret key required for Active Admin etc. to work on production
+  if Rails.env.production?
   config.secret_key = '8c200f82fd424dd3f683ef8802556e80f6b64dfa5f9834e2087194488416161442594858d11ac136a7a8556b471f8396c366c89fae4f335f2982c63b541932db'
 end
