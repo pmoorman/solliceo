@@ -13,6 +13,8 @@ gem 'activeadmin'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'mandrill-api'
 gem 'httpi', '~> 2.1.0'
+gem 'newrelic_rpm'
+
 group :production do
 	gem 'pg'
 end
