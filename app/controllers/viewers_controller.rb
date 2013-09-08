@@ -11,6 +11,9 @@ class ViewersController < ApplicationController
   # override layout for the Viewers
   layout "viewer", :only => :show
 
+  # override layout for the Viewers
+  layout "dashboard", :only => :index
+
 
   def index
     render and return unless current_user

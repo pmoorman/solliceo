@@ -47,7 +47,7 @@
 	<div class="box" id="firstBox">
 		
 		<% if @viewer.user.videoid == 0.0 %>
-			<iframe id="video" src="http://vicancy.wufoo.com/forms/solliceo-jouw-video-sollicitatie/" frameborder="0"></iframe>
+			<iframe id="video" src="http://videowizard.webflow.com/" frameborder="0"></iframe>
 		<% else %>
 			<iframe id="video" src="http://player.vimeo.com/video/<%= @viewer.user.videoid %>?autoplay=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 		<% end %>
