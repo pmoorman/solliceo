@@ -10,7 +10,7 @@
 
               <% @viewers.each do |viewer| %>
             
-                <h4><%= viewer.company %> - <%= viewer.vacancy %> | <span class="pull-right"><%= link_to '<a href="#" data-toggle="tooltip" title="Bewerk deze sollicitatie"><i class="icon-wrench"></i></a>'.html_safe, edit_viewer_path(viewer) %> <%= link_to '<a href="#" data-toggle="tooltip" title="Verwijder deze sollicitatie"><i class="icon-trash"></i></a>'.html_safe, viewer, method: :delete, data: { confirm: 'Are you sure? The viewer will be deleted forever.' } %></span></h4>
+                <h4><%= viewer.company %> - <%= viewer.vacancy %> <span class="pull-right"><%= link_to '<i class="icon-wrench"></i>'.html_safe, viewer, title: 'Bewerk deze sollicatie', rel: 'tooltip' %> <%= link_to '<i class="icon-trash"></i>'.html_safe, viewer, method: :delete, data: { confirm: 'Weet je het zeker? Deze sollicitatie wordt permanent verwijderd.' }, title: 'Verwijder deze sollicitatie', rel: 'tooltip' %></span></h4>
               <% end %>
 
             </div>
