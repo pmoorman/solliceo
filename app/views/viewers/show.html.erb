@@ -53,7 +53,7 @@
 		<% end %>
 
 		<div style="margin:auto;">
-		  <h3 style="line-height: 115%;">Hallo <%= @viewer.company %>. Mijn naam is <%= @viewer.user.name %>.
+		  <h3 style="line-height: 115%;">Hallo <%= best_in_place @viewer, :company, type: :input %>. Mijn naam is <%= @viewer.user.name %>.
 		  </br>
 		  Ik wil graag onderdeel uitmaken van uw team.</h3>
 		</div>
