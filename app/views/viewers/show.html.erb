@@ -42,100 +42,60 @@
 		<%= link_to 'Back', viewers_path %>
 -->
 
-<div class="container">
-	
-	<div class="box" id="firstBox">
-		
-		<% if @viewer.user.videoid == 0.0 %>
-			<iframe id="video" src="http://videowizard.webflow.com/" frameborder="0"></iframe>
-		<% else %>
-			<iframe id="video" src="http://player.vimeo.com/video/<%= @viewer.user.videoid %>?autoplay=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-		<% end %>
 
-		<div style="margin:auto;">
-		  <h3 style="line-height: 115%;">Hallo <%= @viewer.company %>. Mijn naam is <%= @viewer.user.name %>.
-		  </br>
-		  Ik wil graag onderdeel uitmaken van uw team.</h3>
-		</div>
-		<div class="btn-group" style="margin:auto; margin-bottom: 30px;">
-		  <button class="span2 btn btn-large btn-primary" data-target="#contact-modal" data-toggle="modal">Contact Nu</button>
-		  <button class="span2 btn btn-large btn-block" data-target="#attached-files-modal" data-toggle="modal">Download CV</button>
-		</div>
-	</div>
+<!-- New viewer design -->
 
-	<div class="content">
-		<div class="row-fluid">
-			
-			<div id="content" class="span9">
-				<ul class="nav tabs">
-					<% @viewer.file_uploads.each_with_index do |file, i| %>
-						<li <%== 'class="active"' if i ==0 %>><a href="#file-<%= file.id %>" data-toggle="tab"><%= file.name %></a></li>
-					<% end %>
-				</ul>
-				<div class="tab-content box">
-					<% @viewer.file_uploads.each_with_index do |file, i|  %>
-						<div id="file-<%= file.id %>" class="tab-pane <%== 'active' if i ==0 %>" style="text-align: center;">
-							<iframe src="https://docs.google.com/gview?url=<%= file.file.url %>&embedded=true"></iframe>
-							<div class="btn-group" style="margin:auto; margin-bottom: 10px;">
-							  <button class="span6 btn btn-large btn-primary" data-target="#contact-modal" data-toggle="modal">Contact Nu</button>
-							  <button class="span6 btn btn-large btn-block" data-target="#attached-files-modal" data-toggle="modal">Download CV</button>
-							</div>
-						</div>
-					<% end %>
-				</div>
-			</div>
 
-			<div class="span3" id="contact-area">
-				<div class="box company" style="margin-top:30px;">
-					<div style="margin:10px;"> <!-- to set margins properly -->
-						<% unless @viewer.user.image.blank? %>
-						<div>
-							<%= image_tag @viewer.user.image(:medium), class: "img-custom-style" %>
-						</div>
-						<% end %>
-						
-						<div>
-							<h3>Contact</h3>
-							<p style=" line-height:110%;">
-								<%= @viewer.user.name %> </br>
-								<%= @viewer.user.email %> </br>
-
-								<% unless @viewer.user.phone.blank? %>
-									<div>
-										<%= @viewer.user.phone %> </br>
-									</div>
-								<% end %>
-
-								<% unless @viewer.user.linkedin.blank? %>
-									<div>
-										<%= @viewer.user.linkedin %> </br>
-									</div>
-								<% end %>
-								
-								<% unless @viewer.user.twitter.blank? %>
-									<div>
-										<%= @viewer.user.twitter %> </br>
-									</div>
-								<% end %>
-
-								<% unless @viewer.user.residence.blank? %>
-									<div>
-										<%= @viewer.user.residence %> </br>
-									</div>
-								<% end %>
-							</p>
-						</div>
-						<div class="btn-group">
-							<button class="btn btn-primary" data-target="#contact-modal" data-toggle="modal">Contact</button>
-							<button class="btn" data-target="#attached-files-modal" data-toggle="modal">Download CV</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
+<div class="viewer_masthead">
+	<div class="w-container">
+		<h2>Hello Unilever, my name is Pieter Moorman.<br>I want to join your team!</h2>
 	</div>
 </div>
+
+<div class="w-container viewer_container">
+    <div class="w-row general-info-bar">
+      <div class="w-col w-col-4">
+        <div class="profile-image-section">
+          <img class="profile-image" src="images/P4200460.JPG" height="150" alt="P4200460.JPG">
+        </div>
+        <p><strong>Contact info<br></strong>Pieter Moorman
+          <br>Facebook
+          <br>LinkedIn
+          <br>Twitter</p>
+      </div>
+      <div class="w-col w-col-5">
+        <h5>Entrepreneur &amp; programmer</h5>
+        <p><em>"Some random quote here that I find really inspiring"</em>
+        </p>
+      </div>
+      <div class="w-col w-col-3"></div>
+    </div>
+    <div class="video-section">
+      <div class="w-embed w-video videoplayer" style="padding-top: 56.27659574468085%;">
+        <iframe src="//player.vimeo.com/video/67134570" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+      </div>
+    </div>
+    <div class="w-row about-row">
+      <div class="w-col w-col-4 left-colum">
+        <h4>About</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus
+          id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+      </div>
+      <div class="w-col w-col-8 right-column">
+        <h4>Summary</h4>
+        <p>-- BSc. Economics &amp; Governance @Wageningen University (2010-2013)
+          <br>-- Started multiple online businesses
+          <br>-- Programs in HTML, CSS &amp; Ruby on Rails</p>
+      </div>
+    </div><a class="viewer_button" href="#">Download Resume</a>
+    <div class="tabs-section">
+      <div class="w-embed w-iframe tab1">
+        <iframe style="width:100%; height:600px;border:none;" src="https://docs.google.com/document/d/12X81LFSWqdN5vJpMSNW-7HojoNGcESL9g8bDLKwG9_4/pub?embedded=true"></iframe>
+      </div><a class="viewer_button" href="#">Download Resume</a>
+    </div>
+</div>
+
+<!-- New viewer design end-->
  
 <!-- Modal -->
 <div id="contact-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">

@@ -45,7 +45,7 @@ class ViewersController < ApplicationController
       end
 
       respond_to do |format|
-        format.html # show.html.erb
+        format.html {render :layout => 'viewer'}
         format.json { render json: @viewer }
       end
     else
