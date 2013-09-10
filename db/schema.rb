@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610060251) do
+ActiveRecord::Schema.define(:version => 20130910111438) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(:version => 20130610060251) do
     t.string   "twitter"
     t.string   "residence"
     t.string   "image_remote_url"
+    t.string   "about_title"
+    t.string   "about"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -89,9 +91,13 @@ ActiveRecord::Schema.define(:version => 20130610060251) do
   create_table "viewers", :force => true do |t|
     t.string   "company"
     t.string   "vacancy"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "user_id"
+    t.string   "summary_title"
+    t.string   "summary"
+    t.string   "title"
+    t.string   "tagline"
   end
 
   add_index "viewers", ["user_id"], :name => "index_viewers_on_user_id"

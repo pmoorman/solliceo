@@ -1,0 +1,43 @@
+<h3>Account settings</h3>
+
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs form-horizontal">
+    <%= f.input :name, :required => true, :autofocus => true %> 
+    <%= f.input :email, :required => true %>
+    <%= f.input :phone, label: "Phone number" %>
+    <%= f.input :linkedin, label: "LinkedIn account", placeholder: "paste your 'public profile' here" %>
+    <%= f.input :twitter, label: "Twitter account", placeholder: "example: @qieter" %>
+    <%= f.input :residence, label: "Residence city" %>
+    <%= f.input :image, label: "Upload a profile image" %>
+    <%= f.input :image_remote_url, label: "or enter a profile image URL" %>    
+  </div>
+
+  <div style="margin-bottom: 50px;">
+    <%= f.button :submit, "Update", class: "btn btn-primary" %>
+  </div>
+
+  <div class="form-inputs">
+    <div class="well" style="width:410px; margin-left:30px;">
+      
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+
+      <h4>Change password</h4>
+      <%= f.input :password, label: "new password", :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+      <%= f.input :password_confirmation, :required => false %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.button :submit, "Update", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+
+<%= link_to "Back", :back %>
