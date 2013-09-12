@@ -61,5 +61,13 @@ module Solliceo
 
     # Required for Devise on Heroku
     config.assets.initialize_on_precompile = false
+
+    config.to_prepare do
+      Devise::SessionsController.layout "dashboard"
+      Devise::RegistrationsController.layout "dashboard" 
+      Devise::ConfirmationsController.layout "dashboard"
+      Devise::UnlocksController.layout "dashboard"            
+      Devise::PasswordsController.layout "dashboard"
+    end
   end
 end
