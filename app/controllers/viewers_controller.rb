@@ -20,6 +20,9 @@ class ViewersController < ApplicationController
     # Only show user's own viewers in the index
     @viewers = current_user.viewers.all
 
+    @viewer = current_user.viewers.new
+    4.times { @viewer.file_uploads.build }
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @viewers }
