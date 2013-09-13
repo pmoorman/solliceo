@@ -14,8 +14,7 @@
               <% end %>
 
             </div>
-            
-            <%= link_to '<i class="icon-user" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, edit_user_registration_path, class: 'button button-secondary button-left', title: 'Jouw Account', rel: 'tooltip' %>
+            <%= link_to '<i class="icon-user" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, '#user_edit_form', class: 'button button-secondary button-left', title: 'Jouw Account', rel: 'tooltip', data: {toggle: 'modal', resource: current_user, resource_name: current_user} %>
 
             <%= link_to 'Nieuwe Sollicitatie', new_viewer_path, class: 'button button-main' %>
             
@@ -30,6 +29,21 @@
       </div>
     </div>
   </div> 
+
+  <div id="user_edit_form" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Account settings</h3>
+  </div>
+  <div class="modal-body">
+    <%= render partial: 'devise/registrations/edit', locals: {resource: current_user, resource_name: current_user} %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+  </div>
+
+  
 
 <% else %>
 
