@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+	layout "dashboard", :only => :home
   def home
   end
 
