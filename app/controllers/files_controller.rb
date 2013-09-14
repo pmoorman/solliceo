@@ -24,7 +24,7 @@ class FilesController < ApplicationController
 		@file = @viewer.file_uploads.find(params[:id])
 		@file.destroy
 		flash[:notice] = "File removed"
-		redirect_to [:edit, @viewer]
+		redirect_to viewer_url(@viewer)
 	end
 
 	def update

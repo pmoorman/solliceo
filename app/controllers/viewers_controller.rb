@@ -32,6 +32,7 @@ class ViewersController < ApplicationController
   # GET /viewers/1
   # GET /viewers/1.json
   def show
+    @file = FileUpload.new
     user = User.find_by_subdomain(request.subdomain) || current_user
     if params[:id]
       if current_user
