@@ -24,20 +24,22 @@
 			    
 			<% end %>
 
-			<div id="add_file_form">
-				<% @viewer.file_uploads.build %>
+			<% unless @viewer.file_uploads.count >= 4 %>		
+				<div id="add_file_form">
+					<% @viewer.file_uploads.build %>
 
-				<%= f.fields_for :file_uploads, @viewer.file_uploads.last do |fu| %>
-					<div class="form-inputs">
-						<%= fu.text_field :name, placeholder: "Enter file name" %>
-						<%= fu.file_field :file %>
-					</div>
-				<% end %>
-			</div>
+					<%= f.fields_for :file_uploads, @viewer.file_uploads.last do |fu| %>
+						<div class="form-inputs">
+							<%= fu.text_field :name, placeholder: "Enter file name" %>
+							<%= fu.file_field :file %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
 			
 		</ul>
 		
-		<% unless @viewer.file_uploads.count >= 4 %>
+		<% if false %>
 			<%= link_to "New file", '#', class: "btn", :id => "new_file_button" %>
 		<% end %>
 	</div>

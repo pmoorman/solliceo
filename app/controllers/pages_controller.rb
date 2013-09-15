@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-	layout "dashboard", :only => :home
+	layout "salespage", :only => :home
   def home
   end
 
