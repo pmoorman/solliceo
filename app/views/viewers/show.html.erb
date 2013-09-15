@@ -6,36 +6,37 @@
 	<meta property="og:video:type" content="application/x-shockwave-flash" />
 	<meta name="Description" content="<%= "Hallo #{@viewer.company}. Mijn naam is #{@viewer.user.name}. Ik wil graag onderdeel uitmaken van uw team." %>"><!-- meta description for search engines and social sharing -->
 <% end %>
+
+<!-- Edit navbar -->
+
 	<% if current_user == @viewer.user %>
-	<!-- Edit modus -->
-	  	<div class="navbar navbar-fixed-top navbar-inverse">
-		    <div class="navbar-inner">
-		    	<div class="container">
-	  			
-	      		<%= link_to "Solliceo", root_path, class: "brand" %>
-	      		<ul class="nav">
-	        		<li><%= link_to "Dashboard", root_path %></li>
-	        		<li class="dropdown">
-	        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	        				Edit
-	        				<span class="caret"></span>
-	        			</a>
-	         			<ul class="dropdown-menu">
-	        				<li><a data-target="#contact-modal" data-toggle="modal">Edit Video</a></li>
-	        				<li><a data-target="#edit-files-modal" data-toggle="modal">Edit Files</a></li>
-	        				<li><a data-target="#edit-contact-modal">Edit Contact Info</a></li>
-	        				<li class="divider"></li>
-	        				<li><a href="#">Account settings</a></li>
-	        			</ul>
-	        		</li>
-	        	</ul>
-	        	<ul class="nav pull-right">
-	      		  <li><%= link_to "Apply to Job", '#application_form', data: {toggle: 'modal', viewer: @viewer} %></li>
-	            <li><%= link_to "Share" %></li>	
-	      		</ul>
-		      </div>
-		    </div>
-	  	</div>
+  	<div class="navbar navbar-fixed-top navbar-inverse">
+	    <div class="navbar-inner">
+	    	<div class="container">
+  			
+      		<%= link_to "Solliceo", root_path, class: "brand" %>
+      		<ul class="nav">
+        		<li><%= link_to "Dashboard", root_path %></li>
+        		<li class="dropdown">
+        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        				Edit
+        				<span class="caret"></span>
+        			</a>
+         			<ul class="dropdown-menu">
+        				<li><a data-target="#contact-modal" data-toggle="modal">Edit Video</a></li>
+        				<li><a data-target="#edit-files-modal" data-toggle="modal">Edit Files</a></li>
+        				<li class="divider"></li>
+        				<li><%= link_to 'Account Settings', '#user_edit_form', data: {toggle: 'modal', resource: current_user, resource_name: current_user} %></li>
+        			</ul>
+        		</li>
+        	</ul>
+        	<ul class="nav pull-right">
+      		  <li><%= link_to "Apply to Job", '#application_form', data: {toggle: 'modal', viewer: @viewer} %></li>
+<!--            <li><%= link_to "Share" %></li>	 -->
+      		</ul>
+	      </div>
+	    </div>
+  	</div>
 	<% end %>
 <!--
 		<%= link_to 'Edit', edit_viewer_path(@viewer) %> |
@@ -48,7 +49,14 @@
 
 <div class="viewer_masthead">
 	<div class="w-container">
-		<h2>Hello Unilever, my name is Pieter Moorman.<br>I want to join your team!</h2>
+		<h2>Hallo <%= @viewer.company %>, mijn naam is <%= @viewer.user.name %>.
+      <br>
+    <% if @viewer.vacancy.blank? %>
+      Ik wil graag onderdeel uitmaken van uw team.
+    <% else %>
+      Dit is mijn sollicitatie voor <%= @viewer.vacancy %>.
+    <% end %>
+    </h2>
 	</div>
 </div>
 
@@ -58,35 +66,57 @@
         <div class="profile-image-section">
           <img class="profile-image" src="images/P4200460.JPG" height="150" alt="P4200460.JPG">
         </div>
-        <p><strong>Contact info<br></strong>Pieter Moorman
-          <br>Facebook
-          <br>LinkedIn
-          <br>Twitter</p>
+        <p><strong>Contact info<br></strong>
+          
+          <% unless @viewer.user.email.blank? %>
+            <a style="color:#333;" href="mailto:<%= @viewer.user.email %>" target="_blank">Email</a><br>
+          <% end %>
+
+          <% unless @viewer.user.phone.blank? %>
+            <%= @viewer.user.phone %><br>
+          <% end %>
+          
+          <% unless @viewer.user.linkedin.blank? %>
+            <a style="color:#333;" href="<%= @viewer.user.linkedin %>" target="_blank">Linkedin</a><br>
+          <% end %>
+
+          <% unless @viewer.user.twitter.blank? %>
+            <a style="color:#333;" href="https://twitter.com/<%= @viewer.user.twitter %>" target="_blank">Twitter</a><br>
+          <% end %>
+
+        </p>
       </div>
       <div class="w-col w-col-5">
-        <h5>Entrepreneur &amp; programmer</h5>
-        <p><em>"Some random quote here that I find really inspiring"</em>
+        <h5><%= @viewer.title %></h5>
+        <p><em>"<%= @viewer.tagline %>"</em>
         </p>
       </div>
       <div class="w-col w-col-3"></div>
     </div>
     <div class="video-section">
       <div class="w-embed w-video videoplayer" style="padding-top: 56.27659574468085%;">
-        <iframe src="//player.vimeo.com/video/67134570" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+        
+        <% if @viewer.user.videoid == 0.0 %>
+          <iframe id="video" src="http://videowizard.webflow.com/" frameborder="0"></iframe>
+        <% else %>
+          <iframe src="http://player.vimeo.com/video/<%= @viewer.user.videoid %>?autoplay=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+        <% end %>
+        
       </div>
     </div>
+
     <div class="w-row about-row">
+<!-- About & Summary      
       <div class="w-col w-col-4 left-colum">
         <h4>About</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus
           id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
       </div>
       <div class="w-col w-col-8 right-column">
-        <h4>Summary</h4>
-        <p>-- BSc. Economics &amp; Governance @Wageningen University (2010-2013)
-          <br>-- Started multiple online businesses
-          <br>-- Programs in HTML, CSS &amp; Ruby on Rails</p>
-      </div>
+        <h4><%= @viewer.summary_title %></h4>
+        <p><%= @viewer.summary %></p>
+      </div> 
+-->
     </div><a class="viewer_button" href="#">Download Resume</a>
     <div class="tabs-section">
       <div class="w-embed w-iframe tab1">
@@ -188,3 +218,17 @@
         <% end %>
     </div>
 </div>
+
+<!-- account settings modal -->
+  <div id="user_edit_form" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Account settings</h3>
+    </div>
+    <div class="modal-body">
+      <%= render partial: 'devise/registrations/edit', locals: {resource: current_user, resource_name: current_user} %>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+  </div>

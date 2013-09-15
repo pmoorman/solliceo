@@ -12,7 +12,7 @@
 		  <h3 style="line-height: 115%;">Hallo <%= @viewer.company %>. Mijn naam is <%= @viewer.user.name %>.
 		  </br>
 		  Ik wil graag onderdeel uitmaken van uw team.</h3>
-		</div>
+		</div>d
 		<div class="btn-group" style="margin:auto; margin-bottom: 30px;">
 		  <button class="span2 btn btn-large btn-primary" data-target="#contact-modal" data-toggle="modal">Contact Nu</button>
 		  <button class="span2 btn btn-large btn-block" data-target="#attached-files-modal" data-toggle="modal">Download CV</button>

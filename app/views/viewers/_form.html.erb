@@ -2,12 +2,12 @@
     <%= @viewer.errors.full_messages.to_sentence %>
 
 	<div class="form-inputs">
-		<%= f.input :company %>
-		<%= f.input :vacancy, placeholder: "leave blank for open applications" %>
+		<%= f.input :company, label: 'Bedrijf', placeholder: 'bijv. Unilever, of ING' %>
+		<%= f.input :vacancy, label: 'Vacature', placeholder: "bijv. salesmanager" %>
 	</div>
 	
 	<hr>
-	<p>You can upload up to 4 files (*.psd/*.doc):</p>
+	<p>Je kunt tot 4 bestanden uploaden (*.psd/*.doc). Dit zijn bijvoorbeeld je CV, en movitatiebrief:</p>
 
 	<div class="files-list">
 		<ul>
@@ -16,13 +16,13 @@
 			    	<% if file_upload.new_record? %>
 			    		<%= f.fields_for :file_uploads, file_upload do |fu| %>
 							<div class="form-inputs">
-								<%= fu.text_field :name, placeholder: "Enter file name" %>
+								<%= fu.text_field :name, placeholder: "Bestandsnaam (bijv. CV)" %>
 								<%= fu.file_field :file %>
 							</div>
 						<% end %>
 			    	<% else %>
-				    	<%= link_to "Edit", edit_viewer_file_path(@viewer, file_upload) %> | 
-				    	<%= link_to "Remove", viewer_file_path(@viewer, file_upload), method: :delete, confirm: "Are you sure?" %>
+				    	<%= link_to "Bewerken", edit_viewer_file_path(@viewer, file_upload) %> | 
+				    	<%= link_to "Verwijderen", viewer_file_path(@viewer, file_upload), method: :delete, confirm: "Weet je het zeker?" %>
 				    	<strong><%= file_upload.name %></strong>
 				    	<%= file_upload.file_file_name %>
 				    <% end %>
@@ -34,6 +34,6 @@
 	</div>
 
 	<div class="form-actions" style="background-color:white;">
-		<%= f.button :submit, class: "btn btn-primary" %>
+		<%= f.button :submit, "Sollicitatie aanmaken", class: "btn btn-primary" %>
 	</div>
 <% end %>
