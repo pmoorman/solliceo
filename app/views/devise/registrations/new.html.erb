@@ -21,9 +21,9 @@
             <h4>of gebruik een URL voor je profielfoto</h4>
             <%= f.input :image_remote_url, label: false, placeholder: 'bijv. je LinkedIn profielfoto', input_html: { class: 'w-input' } %>
           </div>
-          <%= link_to '<i class="icon-hand-right" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_session_path(resource_name), title: 'Sign in', rel: 'tooltip', :class => "button button-secondary button-left" %>
+          <%= link_to '<i class="icon-hand-right" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_session_path(resource_name), title: 'Ben je al gebruiker? >> Inloggen', :class => "button button-secondary button-left button_tooltip", data: {toggle: 'modal', placement: 'bottom'} %>
           <%= f.submit "Account aanmaken", class: "button button-main login_button" %>
-          <%= link_to '<i class="icon-flag" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_password_path(resource_name), title: 'Forgot your password?', rel: 'tooltip', :class => "button button-secondary button-right" %>
+          <%= link_to '<i class="icon-flag" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_password_path(resource_name), title: 'Wachtwoord vergeten?', :class => "button button-secondary button-right button_tooltip", data: {toggle: 'modal', placement: 'bottom'} %>
           <% end %>
         </div>
         </div>

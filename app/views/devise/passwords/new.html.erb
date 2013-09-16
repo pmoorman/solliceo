@@ -1,20 +1,25 @@
-<div class="container" style="height: 100%;">
-<div class="well" style="background-color:#fff; width: 500px;">
-<h2>Forgot your password?</h2>
-
-<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
+<div class="main-section">
+    <div class="w-container container login_container">
+      <div class="w-row">
+        <div class="w-col w-col-4">
+         <div class="w-clearfix dashboard login_form">
+          <div class="dashboard-whitebox login_form">
+            <h2>Forgot your password?</h2>
+            <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), html: { :method => :post, class: 'form-horizontal'}) do |f| %>
+              <%= f.error_notification %>
+            <h4>Email</h4>
+            <%= f.input :email, label: false, :required => true, :autofocus => true, input_html: { class: 'w-input' } %>
+          </div>
+          <%= link_to '<i class="icon-share-alt" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_registration_path(resource_name), title: 'Nog geen account? >> Aanmaken', :class => "button button-secondary button-left button_tooltip", data: {toggle: 'modal', placement: 'bottom'} %>
+          <%= f.submit "Send", class: "button button-main login_button" %>
+          <%= link_to '<i class="icon-hand-right" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_session_path(resource_name), title: 'Ben je al gebruiker? >> Inloggen', :class => "button button-secondary button-right button_tooltip", data: {toggle: 'modal', placement: 'bottom'} %>
+          <% end %>
+        </div>
+        </div>
+        <div class="w-col w-col-8">
+          <h1 class="w-hidden-medium w-hidden-small w-hidden-tiny">Klaar voor actie?</h1>
+          <h3 class="w-hidden-medium w-hidden-small w-hidden-tiny">Gebruik Solliceo. Kom bij je droombaan op gesprek.</h3>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-</div>
-</div>
