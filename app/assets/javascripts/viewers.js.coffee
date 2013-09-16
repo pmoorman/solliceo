@@ -6,3 +6,5 @@ jQuery ->
 	$("#new_file_button").click (e) ->
 		e.preventDefault()
 		$("#add_file_form").css('display', 'block')
+
+	$('.best_in_place').best_in_place()
