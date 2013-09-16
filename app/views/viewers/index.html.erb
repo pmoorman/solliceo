@@ -1,70 +1,60 @@
-<% if user_signed_in? %>
+<div class="main-section">
+  <div class="w-container container">
+    <div class="w-row">
+      <div class="w-col w-col-4">
+        <div class="w-clearfix dashboard">
+          <div class="dashboard-whitebox">
+            <h2>Dashboard</h2>
 
-  <div class="main-section">
-    <div class="w-container container">
-      <div class="w-row">
-        <div class="w-col w-col-4">
-          <div class="w-clearfix dashboard">
-            <div class="dashboard-whitebox">
-              <h2>Dashboard</h2>
-
-              <% @viewers.each do |viewer| %>
-            
-                <h4><%= viewer.company %> - <%= viewer.vacancy %> 
-                  <span class="pull-right">
-                  <%= link_to '<i class="icon-wrench"></i>'.html_safe, viewer, title: 'Bewerk deze sollicatie', rel: 'tooltip', data: {toggle: 'tooltip', placement: 'right'}, :id => "button_tooltip" %> 
-                  <%= link_to '<i class="icon-trash"></i>'.html_safe, viewer, method: :delete, data: { confirm: 'Weet je het zeker? Deze sollicitatie wordt permanent verwijderd.' }, title: 'Verwijder deze sollicitatie', rel: 'tooltip' %>
-                  </span>
-                </h4>
-              <% end %>
-
-            </div>
-            <%= link_to '<i class="icon-user" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, '#user_edit_form', class: 'button button-secondary button-left', title: 'Jouw Account', rel: 'tooltip', data: {toggle: 'modal', resource: current_user, resource_name: current_user} %>
-
-            <%= link_to 'Nieuwe Sollicitatie', '#new_viewer_form', class: 'button button-main', :id => "button_tooltip", data: {toggle: 'modal'} %>
-            
-            <a class="button button-right button-secondary" href="http://vicancy.com/solliceo/formulier/" target="_blank"data-toggle="tooltip" title="Video aanmaken"><i class="icon-film" style="margin-left:-5px; margin-top:-1px;"></i></a>
+            <% @viewers.each do |viewer| %>
+          
+              <h4><%= viewer.company %> - <%= viewer.vacancy %> 
+                <span class="pull-right">
+                <%= link_to '<i class="icon-wrench"></i>'.html_safe, viewer, title: 'Bewerk deze sollicatie', rel: 'tooltip', data: {toggle: 'tooltip', placement: 'right'}, :id => "button_tooltip" %> 
+                <%= link_to '<i class="icon-trash"></i>'.html_safe, viewer, method: :delete, data: { confirm: 'Weet je het zeker? Deze sollicitatie wordt permanent verwijderd.' }, title: 'Verwijder deze sollicitatie', rel: 'tooltip' %>
+                </span>
+              </h4>
+            <% end %>
 
           </div>
-        </div>
-        <div class="w-col w-col-8">
-          <h1 class="w-hidden-medium w-hidden-small w-hidden-tiny">Klaar voor actie?</h1>
-          <h3 class="w-hidden-medium w-hidden-small w-hidden-tiny">Gebruik Solliceo. Kom bij je droombaan op gesprek.</h3>
+          <%= link_to '<i class="icon-user" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, '#user_edit_form', class: 'button button-secondary button-left', title: 'Jouw Account', rel: 'tooltip', data: {toggle: 'modal', resource: current_user, resource_name: current_user} %>
+
+          <%= link_to 'Nieuwe Sollicitatie', '#new_viewer_form', class: 'button button-main', :id => "button_tooltip", data: {toggle: 'modal'} %>
+          
+          <a class="button button-right button-secondary" href="http://vicancy.com/solliceo/formulier/" target="_blank"data-toggle="tooltip" title="Video aanmaken"><i class="icon-film" style="margin-left:-5px; margin-top:-1px;"></i></a>
+
         </div>
       </div>
-    </div>
-  </div> 
-
-  <div id="user_edit_form" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Account instellingen</h3>
-    </div>
-    <div class="modal-body">
-      <%= render partial: 'devise/registrations/edit', locals: {resource: current_user, resource_name: current_user} %>
-    </div>
-    <div class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <div class="w-col w-col-8">
+        <h1 class="w-hidden-medium w-hidden-small w-hidden-tiny">Klaar voor actie?</h1>
+        <h3 class="w-hidden-medium w-hidden-small w-hidden-tiny">Gebruik Solliceo. Kom bij je droombaan op gesprek.</h3>
+      </div>
     </div>
   </div>
+</div> 
 
-  <div id="new_viewer_form" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Nieuwe sollicitatie maken</h3>
-    </div>
-    <div class="modal-body">
-      <%= render partial: 'form' %>
-    </div>
-    <div class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Sluiten</button>
-    </div>
+<div id="user_edit_form" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Account instellingen</h3>
   </div>
+  <div class="modal-body">
+    <%= render partial: 'devise/registrations/edit', locals: {resource: current_user, resource_name: current_user} %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
 
-  
-
-<% else %>
-
-  <%= render 'pages/landingpage' %>
-
-<% end %>
+<div id="new_viewer_form" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Nieuwe sollicitatie maken</h3>
+  </div>
+  <div class="modal-body">
+    <%= render partial: 'form' %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Sluiten</button>
+  </div>
+</div>
