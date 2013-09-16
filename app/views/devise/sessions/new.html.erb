@@ -4,18 +4,18 @@
         <div class="w-col w-col-4">
          <div class="w-clearfix dashboard login_form">
           <div class="dashboard-whitebox login_form">
-            <h2>Sign in</h2>
+            <h2>Login</h2>
             <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal'}) do |f| %>
               <%= f.error_notification %>
             <h4>Email</h4>
             <%= f.input :email, label: false, :required => true, :autofocus => true, input_html: { class: 'w-input' } %>
-            <h4>Password</h4>
+            <h4>Wachtwoord</h4>
             <%= f.input :password, label: false, :required => true, input_html: { class: 'w-input' } %>
-            <h4 class="login_remember">Remember Me</h4>
+            <h4 class="login_remember">Onthoud mij</h4>
             <%= f.input :remember_me, label: false, :as => :boolean, input_html: { class: 'login_checkbox' } if devise_mapping.rememberable? %>
           </div>
           <%= link_to '<i class="icon-share-alt" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_registration_path(resource_name), title: 'Sign up', rel: 'tooltip', :class => "button button-secondary button-left" %>
-          <%= f.submit "Sign in", class: "button button-main login_button" %>
+          <%= f.submit "Log in", class: "button button-main login_button" %>
           <%= link_to '<i class="icon-flag" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_password_path(resource_name), title: 'Forgot your password?', rel: 'tooltip', :class => "button button-secondary button-right" %>
           <% end %>
         </div>

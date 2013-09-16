@@ -1,7 +1,7 @@
 <div id="landingpage">
 
 	<!-- Der Masthead -->
-	<div class="masthead">
+	<div class="masthead" style="margin-bottom: -300px;">
 	  <div class="container" style="text-align: center;">
 	    <h1>Solliceo</h1>
 	    <div style="margin:20px auto -20px">
@@ -15,55 +15,14 @@
 	  </div>
 	</div>
 
-	<div class="container">
-    <div class="row-fluid">
-			<div class="span4 offset4">
-				<a class="btn btn-inverse btn-block btn-large" href="http://solliceo.herokuapp.com/viewers/5" target="_blank">Bekijk de Demo ;)</a>
-			</div>
-		</div>
-
   	<hr class="soften">
 
-  	<!-- What & Why -->
-    <div class="row-fluid">
-      <div class="span5 well" style="background-color:#fff;">
-      	<h3>Wat is Solliceo?</h3>
-      	<p>
-      		Waar u vroeger een goede eerste indruk neerzette met een handdruk of een strak pak, 
-          <br>vindt de eerste ontmoeting tegenwoordig steeds vaker plaats op het web. 
-          Of het nu gaat om het presenteren van uw professionele profiel of 
-          het zoeken naar een baan, een goede eerste indruk op het web is vaak het halve werk.   
-      	</p>
-      </div>
-
-      <div class="span5 offset2 well" style="background-color:#fff;">
-      	<h3>Waarom Solliceo?</h3>
-      	<p>
-					Waar u vroeger een goede eerste indruk neerzette met een handdruk of een strak pak, 
-          <br>vindt de eerste ontmoeting tegenwoordig steeds vaker plaats op het web. 
-          Of het nu gaat om het presenteren van uw professionele profiel of 
-          het zoeken naar een baan, een goede eerste indruk op het web is vaak het halve werk.   
-      	</p>
-      </div>
-    </div>
-
-  	<hr class="soften">
-
-    <div class="row-fluid">
-			<div class="span8 offset2">
-				<h2 style="text-align:center;"><em>"Solliceo is so super awesome. It hurts!"</em></h2>
-				<p style="text-align:center;">Tjalling, (voormalig) werkzoekende</p>
-			</div>
-		</div>
-
-		<div class="row-fluid" style="margin-top:30px;">
-			<div class="btn-group span4 offset4">
-				<%= link_to "Sign Up Now", new_user_registration_path, class: "btn btn-large btn-inverse span6" %>
-				<%= link_to "Login", new_user_session_path, class: "btn btn-large span6"%>
-			</div>    
-    </div>
-
-	</div>
+	<div class="row-fluid" style="margin-top:30px;">
+		<div class="btn-group span4 offset4">
+			<%= link_to "Account maken", new_user_registration_path, class: "btn btn-large btn-inverse span6" %>
+			<%= link_to "Login", new_user_session_path, class: "btn btn-large span6"%>
+		</div>    
+  </div>
 
 </div>
 

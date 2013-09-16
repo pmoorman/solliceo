@@ -4,25 +4,25 @@
         <div class="w-col w-col-4">
          <div class="w-clearfix dashboard login_form">
           <div class="dashboard-whitebox login_form">
-            <h2>Sign up</h2>
+            <h2>Account aanmaken</h2>
             <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: 'form-horizontal'}) do |f| %>
               <%= f.error_notification %>
-            <h4>*Name</h4>
+            <h4>*Naam</h4>
             <%= f.input :name, label: false, :required => true, :placeholder => "e.g. Pieter", input_html: { class: 'w-input' } %>
             <h4>*Email</h4>
             <%= f.input :email, label: false, :required => true, :autofocus => true, input_html: { class: 'w-input' }, :placeholder => "e.g. pieter@gmail.com" %>
-            <h4>*Password</h4>
+            <h4>*Wachtwoord</h4>
             <%= f.input :password, label: false, :required => true, input_html: { class: 'w-input' } %>
-            <h4>*Password confirmation</h4>
+            <h4>*Herhaal wachtwoord</h4>
             <%= f.input :password_confirmation, label: false, :required => true, input_html: { class: 'w-input' } %>
             </br>
-            <h4>Upload an profile image</h4>
+            <h4>Upload een profielfoto</h4>
             <%= f.input :image, label: false, input_html: { class: 'w-input' } %>
-            <h4>or enter a profile image URL</h4>
-            <%= f.input :image_remote_url, label: false, input_html: { class: 'w-input' } %>
+            <h4>of gebruik een URL voor je profielfoto</h4>
+            <%= f.input :image_remote_url, label: false, placeholder: 'bijv. je LinkedIn profielfoto', input_html: { class: 'w-input' } %>
           </div>
           <%= link_to '<i class="icon-hand-right" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_session_path(resource_name), title: 'Sign in', rel: 'tooltip', :class => "button button-secondary button-left" %>
-          <%= f.submit "Sign up", class: "button button-main login_button" %>
+          <%= f.submit "Account aanmaken", class: "button button-main login_button" %>
           <%= link_to '<i class="icon-flag" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_password_path(resource_name), title: 'Forgot your password?', rel: 'tooltip', :class => "button button-secondary button-right" %>
           <% end %>
         </div>
