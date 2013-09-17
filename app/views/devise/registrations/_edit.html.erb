@@ -1,6 +1,6 @@
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= f.error_notification %>
-
+  <h3>Jouw gegevens</h3>
   <div class="form-inputs form-horizontal">
     <%= f.input :name, label: 'Naam', :required => true, :autofocus => true %> 
     <%= f.input :email, label: 'Email', :required => true %>
@@ -18,11 +18,8 @@
 
   <div class="form-inputs">
     <div class="well" style="width:410px; margin-left:30px;">
-      
-      
-
-      <h4>Wijzig wachtwoord</h4>
-      <%= f.input :password, label:"Nieuw wachtwoord", placeholder: 'nieuw wachtwoord', :autocomplete => "off", :hint => "laat open als je dit niet wilt wijzigen", :required => false %>
+      <h3>Wijzig wachtwoord</h3>
+      <%= f.input :password, label:"Nieuw wachtwoord", placeholder: 'nieuw wachtwoord', :autocomplete => "off", :required => false %>
       <%= f.input :password_confirmation, placeholder: 'bevestig wachtwoord', :required => false %>
     </div>
   </div>

@@ -3,13 +3,13 @@
         <%= application.errors.full_messages.to_sentence %>
         <%= hidden_field_tag :viewer, viewer.id %>
         <%= hidden_field_tag :return_url, params[:return_url] || request.referrer %>
-        <%= f.input :emails, label: 'Ontvangers', input_html: {class: 'span12', placeholder: 'info@company1.com, resume@company2.com'} %>
+        <%= f.input :emails, label: 'Ontvanger(s)', input_html: {class: 'span12', placeholder: 'info@bedrijf1.com, solliciteren@bedrijf2.nl'} %>
         <%= f.input :from, label: 'Verzender', input_html: {class: 'span12'} %>        
         <%= f.input :text_body, label: 'Bericht', as: 'text', input_html: {rows: 10, class: 'span12 needs_html_editor'} %>
         <div class="control-group">
             <div class="controls">
                 <%= f.submit 'Versturen', class: 'btn btn-primary' %>
-                <%= link_to 'Terug', 'javascript:void(0)', class: 'btn', data: {dismiss: 'modal'} %>
+                <%= link_to 'Sluiten', 'javascript:void(0)', class: 'btn', data: {dismiss: 'modal'} %>
             </div>
         </div>
     <% end %>
