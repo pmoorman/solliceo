@@ -16,28 +16,33 @@
   			
       		<%= link_to "Solliceo", root_path, class: "brand" %>
       		<ul class="nav">
-        		<li><%= link_to "Dashboard", root_path , title: 'Terug naar Dashboard', rel: 'tooltip' %></li>
+        		<li><%= link_to "Dashboard", root_path %></li>
         		<li class="dropdown">
-        			<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-toggle="tooltip" title="Bewerk deze sollicitatie">
+        			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
         				Edit
         				<span class="caret"></span>
         			</a>
          			<ul class="dropdown-menu">
-        				<li><a href="http://vicancy.com/solliceo/formulier/" target="_blank" data-toggle="tooltip" title="Bewerk jouw video">Bewerk Video</a></li>
-        				<li><a data-target="#edit-files-modal" data-toggle="modal" data-toggle="tooltip" title="zoals CV en motivatiebrief. Voeg nieuwe bestanden toe">Bewerk bestanden</a></li>
-        				<li class="divider"></li>
-        				<li><%= link_to 'Jouw Account', '#user_edit_form', title: 'Pas jouw gegevens aan', rel: 'tooltip', data: {toggle: 'modal', resource: current_user, resource_name: current_user} %></li>
+        				<li><a data-target="#contact-modal" data-toggle="modal">Edit Video</a></li>
+        				<li><a data-target="#edit-files-modal" data-toggle="modal">Edit Files</a></li>
+        				<li class="divider" style="border-bottom: none;"></li>
+        				<li><%= link_to 'Account Settings', '#user_edit_form', data: {toggle: 'modal', resource: current_user, resource_name: current_user} %></li>
         			</ul>
         		</li>
         	</ul>
         	<ul class="nav pull-right">
-      		  <li><%= link_to "Nu Solliciteren", '#application_form', title: 'Verstuur je sollicitatie', rel: 'tooltip', data: {toggle: 'modal', viewer: @viewer} %></li>
+      		  <li><%= link_to "Apply to Job", '#application_form', data: {toggle: 'modal', viewer: @viewer} %></li>
 <!--            <li><%= link_to "Share" %></li>	 -->
       		</ul>
 	      </div>
 	    </div>
   	</div>
 	<% end %>
+<!--
+		<%= link_to 'Edit', edit_viewer_path(@viewer) %> |
+		<%= link_to 'Back', viewers_path %>
+-->
+
 
 <!-- New viewer design -->
 
@@ -56,88 +61,67 @@
 </div>
 
 <div class="w-container viewer_container">
-  <div class="w-row general-info-bar">
-    <div class="w-col w-col-4">
-      <% unless @viewer.user.image.blank? %>
+    <div class="w-row general-info-bar">
+      <div class="w-col w-col-4">
         <div class="profile-image-section">
-          <%= image_tag @viewer.user.image(:medium), class: "profile-image", style: 'height: 150px;' %>
+          <img class="profile-image" src="images/P4200460.JPG" height="150" alt="P4200460.JPG">
         </div>
-      <% end %>
-      <p><strong>Contact info</strong>
+        <p><strong>Contact info<br></strong>
+          
+          <% unless @viewer.user.email.blank? %>
+            <a style="color:#333;" href="mailto:<%= @viewer.user.email %>" target="_blank">Email</a><br>
+          <% end %>
 
-        <!-- edit contact info -->
-        <% if current_user == @viewer.user %>
-           <em><%= link_to '(bewerken)', '#user_edit_form', data: {toggle: 'modal', resource: current_user, resource_name: current_user}, style: 'color:#333;' %></li></em><br>
-        <% end %>
+          <% unless @viewer.user.phone.blank? %>
+            <%= @viewer.user.phone %><br>
+          <% end %>
+          
+          <% unless @viewer.user.linkedin.blank? %>
+            <a style="color:#333;" href="<%= @viewer.user.linkedin %>" target="_blank">Linkedin</a><br>
+          <% end %>
+
+          <% unless @viewer.user.twitter.blank? %>
+            <a style="color:#333;" href="https://twitter.com/<%= @viewer.user.twitter %>" target="_blank">Twitter</a><br>
+          <% end %>
+
+        </p>
+      </div>
+      <div class="w-col w-col-5">
+        <h5><%= @viewer.title %></h5>
+        <p><em><%= @viewer.tagline %></em>
+        </p>
+      </div>
+      <div class="w-col w-col-3"></div>
+    </div>
+    <div class="video-section">
+      <div class="w-embed w-video videoplayer" style="padding-top: 56.27659574468085%;">
         
-        <% unless @viewer.user.email.blank? %>
-          <a style="color:#333;" href="mailto:<%= @viewer.user.email %>" target="_blank">Email</a><br>
+        <% if @viewer.user.videoid == 0.0 %>
+          <iframe id="video" src="http://videowizard.webflow.com/" frameborder="0"></iframe>
+        <% else %>
+          <iframe src="http://player.vimeo.com/video/<%= @viewer.user.videoid %>?autoplay=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
         <% end %>
-
-        <% unless @viewer.user.phone.blank? %>
-          <%= @viewer.user.phone %><br>
-        <% end %>
-        
-        <% unless @viewer.user.linkedin.blank? %>
-          <a style="color:#333;" href="<%= @viewer.user.linkedin %>" target="_blank">Linkedin</a><br>
-        <% end %>
-
-        <% unless @viewer.user.twitter.blank? %>
-          <a style="color:#333;" href="https://twitter.com/<%= @viewer.user.twitter %>" target="_blank">Twitter</a><br>
-        <% end %>
-
-      </p>
+      </div>
     </div>
-    <div class="w-col w-col-5">
-      <h5><%= @viewer.title %></h5>
-      <p><em><%= @viewer.tagline %></em>
-      </p>
-    </div>
-    <div class="w-col w-col-3"></div>
-  </div>
-  <div class="video-section">
-    <div class="w-embed w-video videoplayer" style="padding-top: 56.27659574468085%;">
-      
-      <% if @viewer.user.videoid == 0.0 %>
-        <iframe id="video" src="http://videowizard.webflow.com/" frameborder="0"></iframe>
-      <% else %>
-        <iframe src="http://player.vimeo.com/video/<%= @viewer.user.videoid %>?autoplay=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-      <% end %>
-      
-    </div>
-  </div>
 
-<div class="w-row about-row">
+    <div class="w-row about-row">
 <!-- About & Summary      
-    <div class="w-col w-col-4 left-colum">
-      <h4>About</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus
-        id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-    </div>
-    <div class="w-col w-col-8 right-column">
-      <h4><%= @viewer.summary_title %></h4>
-      <p><%= @viewer.summary %></p>
-    </div> 
+      <div class="w-col w-col-4 left-colum">
+        <h4>About</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus
+          id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+      </div>
+      <div class="w-col w-col-8 right-column">
+        <h4><%= @viewer.summary_title %></h4>
+        <p><%= @viewer.summary %></p>
+      </div> 
 -->
-
-  <div id="content" style="margin-top: 25px;">
-    <ul class="nav tabs">
-      <% @viewer.file_uploads.each_with_index do |file, i| %>
-        <li <%== 'class="active"' if i ==0 %>><a href="#file-<%= file.id %>" data-toggle="tab"><%= file.name %></a></li>
-      <% end %>
-    </ul>
-    <div class="tab-content box">
-      <% @viewer.file_uploads.each_with_index do |file, i|  %>
-        <div id="file-<%= file.id %>" class="tab-pane <%== 'active' if i ==0 %>" style="text-align: center;">
-          <iframe src="https://docs.google.com/gview?url=<%= file.file.url %>&embedded=true"></iframe>
-          <div class="btn-group" style="margin:auto; margin-bottom: 10px;">
-            <button class="btn btn-large btn-primary" data-target="#contact-modal" data-toggle="modal">Contact Nu</button>
-            <button class="btn btn-large" data-target="#attached-files-modal" data-toggle="modal">Download CV</button>
-          </div>
-        </div>
-      <% end %>
+    </div><a class="viewer_button" href="#">Download Resume</a>
+    <div class="tabs-section">
+      <div class="w-embed w-iframe tab1">
+        <iframe style="width:100%; height:600px;border:none;" src="https://docs.google.com/document/d/12X81LFSWqdN5vJpMSNW-7HojoNGcESL9g8bDLKwG9_4/pub?embedded=true"></iframe>
+      </div><a class="viewer_button" href="#">Download Resume</a>
     </div>
-  </div>
 </div>
 
 <!-- New viewer design end-->
@@ -149,33 +133,27 @@
     <h3 id="myModalLabel">Contact info:</h3>
   </div>
   <div class="modal-body">
-  	
+  	<p style=" line-height:110%;">
+			<%= @viewer.user.name %> </br>
+			<%= @viewer.user.email %> </br>
 
-    <p style=" line-height:110%;">
-      Dag <%= @viewer.company %>,<br><br>
+			<% unless @viewer.user.phone.blank? %>
+				<div>
+					<%= @viewer.user.phone %> </br>
+				</div>
+			<% end %>
 
-      ik zou graag verder kennis maken.<br>
-      Via de gegevens hieronder kunt u mij bereiken.<br><br>
-
-      Met vriendelijke groet,<br><br>
-
-      <strong><%= @viewer.user.name %></strong></br></br>
-
-    	<% unless @viewer.user.email.blank? %>
-        <a style="color:#333;" href="mailto:<%= @viewer.user.email %>" target="_blank">Email -- <%= @viewer.user.email %></a><br>
-      <% end %>
-
-      <% unless @viewer.user.phone.blank? %>
-        Telefoon -- <%= @viewer.user.phone %><br>
-      <% end %>
-        
-      <% unless @viewer.user.linkedin.blank? %>
-        <a style="color:#333;" href="<%= @viewer.user.linkedin %>" target="_blank">Linkedin</a><br>
-      <% end %>
-
-      <% unless @viewer.user.twitter.blank? %>
-        <a style="color:#333;" href="https://twitter.com/<%= @viewer.user.twitter %>" target="_blank">Twitter</a><br>
-      <% end %>
+			<% unless @viewer.user.linkedin.blank? %>
+				<div>
+					<%= @viewer.user.linkedin %> </br>
+				</div>
+			<% end %>
+			
+			<% unless @viewer.user.twitter.blank? %>
+				<div>
+					<%= @viewer.user.twitter %> </br>
+				</div>
+			<% end %>
 		</p>
   </div>
   <div class="modal-footer">
@@ -186,12 +164,11 @@
 <div id="attached-files-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Download bestanden:</h3>
+    <h3 id="myModalLabel">Viewer files:</h3>
   </div>
   <div class="modal-body">
-    <p><em>Klik op de bestanden die u wilt downloaden</em></p>
     <% @viewer.file_uploads.each_with_index do |file, i|  %>
-		<p style="padding-left: 15px;"><%= link_to "<strong>#{file.name}</strong> -- (#{file.file_file_name})".html_safe, file.file.url %></p>
+		<p style="padding-left: 15px;"><%= link_to "#{file.name}(#{file.file_file_name})", file.file.url, target: '_blank' %></p>
 	<% end %>
   </div>
   <div class="modal-footer">
@@ -214,24 +191,38 @@
   </div>
 </div>
 
-<div class="modal hide" id="application_form">
+<div id="edit-contact-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Verstuur Sollicitatie</h3>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Edit contact info:</h3>
   </div>
   <div class="modal-body">
-  	<% if current_user %>
-    	<%= render partial: 'applications/form', locals: {application: @application, viewer: @viewer} %>
-    <% end %>
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 </div>
 
-<% if current_user == @viewer.user %>
-  <!-- account settings modal -->
+<div class="modal hide" id="application_form">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Send Application</h3>
+    </div>
+    <div class="modal-body">
+    	<% if current_user %>
+        	<%= render partial: 'applications/form', locals: {application: @application, viewer: @viewer} %>
+        <% end %>
+    </div>
+</div>
+
+<!-- account settings modal -->
   <div id="user_edit_form" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Account Instellingen</h3>
+      <h3 id="myModalLabel">Account settings</h3>
     </div>
     <div class="modal-body">
       <%= render partial: 'devise/registrations/edit', locals: {resource: current_user, resource_name: current_user} %>
@@ -240,4 +231,3 @@
       <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
   </div>
-<% end %>

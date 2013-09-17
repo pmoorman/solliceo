@@ -1,35 +1,29 @@
-
-
-
 <div class="main-section">
-  <div class="w-container container">
-    <div class="w-row">
-      <div class="w-col w-col-4">
-        <div class="w-clearfix dashboard">
-          <div class="dashboard-whitebox">
+    <div class="w-container container login_container">
+      <div class="w-row">
+        <div class="w-col w-col-4">
+         <div class="w-clearfix dashboard login_form">
+          <div class="dashboard-whitebox login_form">
             <h2>Login</h2>
-
-            <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: ' '}) do |f| %>
-  						<div class="form-inputs">
-						    <%= f.input :email, label: 'email', :required => false, :autofocus => true %>
-						    <%= f.input :password, label: 'wachtwoord', :required => false %>
-						    <%= f.input :remember_me, label: 'onthoud mij', :as => :boolean if devise_mapping.rememberable? %>
-  						</div>
-
-  					<%= render "devise/shared/links" %>
+            <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal'}) do |f| %>
+              <%= f.error_notification %>
+            <h4>Email</h4>
+            <%= f.input :email, label: false, :required => true, :autofocus => true, input_html: { class: 'w-input' } %>
+            <h4>Wachtwoord</h4>
+            <%= f.input :password, label: false, :required => true, input_html: { class: 'w-input' } %>
+            <h4 class="login_remember">Onthoud mij</h4>
+            <%= f.input :remember_me, label: false, :as => :boolean, input_html: { class: 'login_checkbox' } if devise_mapping.rememberable? %>
           </div>
-
-          <%= f.button :submit, "Log in", class: "button button-main" %>
-
+          <%= link_to '<i class="icon-share-alt" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_registration_path(resource_name), title: 'Sign up', rel: 'tooltip', :class => "button button-secondary button-left" %>
+          <%= f.submit "Log in", class: "button button-main login_button" %>
+          <%= link_to '<i class="icon-flag" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_password_path(resource_name), title: 'Forgot your password?', rel: 'tooltip', :class => "button button-secondary button-right" %>
+          <% end %>
         </div>
-
-        <% end %>
-      </div>
-
-      <div class="w-col w-col-8">
-        <h1 class="w-hidden-medium w-hidden-small w-hidden-tiny">Klaar voor actie?</h1>
-        <h3 class="w-hidden-medium w-hidden-small w-hidden-tiny">Gebruik Solliceo. Kom bij je droombaan op gesprek.</h3>
+        </div>
+        <div class="w-col w-col-8">
+          <h1 class="w-hidden-medium w-hidden-small w-hidden-tiny">Klaar voor actie?</h1>
+          <h3 class="w-hidden-medium w-hidden-small w-hidden-tiny">Gebruik Solliceo. Kom bij je droombaan op gesprek.</h3>
+        </div>
       </div>
     </div>
   </div>
-</div> 

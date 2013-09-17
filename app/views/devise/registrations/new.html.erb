@@ -1,27 +1,36 @@
-<div class="container" style="height: 100%;">
-<div class="well" style="background-color:#fff; width: 500px;">
-  
-<h2>Account aanmaken</h2>
-
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: 'form-horizontal'}) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name, label: 'Naam', :required => true %>
-    <%= f.input :email, label: 'Email', :required => true, :autofocus => true %>
-    <%= f.input :password, label: 'wachtwoord', :required => true %>
-    <%= f.input :password_confirmation, label: 'herhaal wachtwoord', :required => true %>
-    </br>
-    <%= f.input :image, label: "Upload een profielfoto" %>
-    <%= f.input :image_remote_url, label: "of gebruik een URL voor je profielfoto", placeholder: 'bijv. je LinkedIn profielfoto' %>
+<div class="main-section">
+    <div class="w-container container login_container">
+      <div class="w-row">
+        <div class="w-col w-col-4">
+         <div class="w-clearfix dashboard login_form">
+          <div class="dashboard-whitebox login_form">
+            <h2>Account aanmaken</h2>
+            <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: 'form-horizontal'}) do |f| %>
+              <%= f.error_notification %>
+            <h4>*Naam</h4>
+            <%= f.input :name, label: false, :required => true, :placeholder => "e.g. Pieter", input_html: { class: 'w-input' } %>
+            <h4>*Email</h4>
+            <%= f.input :email, label: false, :required => true, :autofocus => true, input_html: { class: 'w-input' }, :placeholder => "e.g. pieter@gmail.com" %>
+            <h4>*Wachtwoord</h4>
+            <%= f.input :password, label: false, :required => true, input_html: { class: 'w-input' } %>
+            <h4>*Herhaal wachtwoord</h4>
+            <%= f.input :password_confirmation, label: false, :required => true, input_html: { class: 'w-input' } %>
+            </br>
+            <h4>Upload een profielfoto</h4>
+            <%= f.input :image, label: false, input_html: { class: 'w-input' } %>
+            <h4>of gebruik een URL voor je profielfoto</h4>
+            <%= f.input :image_remote_url, label: false, placeholder: 'bijv. je LinkedIn profielfoto', input_html: { class: 'w-input' } %>
+          </div>
+          <%= link_to '<i class="icon-hand-right" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_session_path(resource_name), title: 'Sign in', rel: 'tooltip', :class => "button button-secondary button-left" %>
+          <%= f.submit "Account aanmaken", class: "button button-main login_button" %>
+          <%= link_to '<i class="icon-flag" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_password_path(resource_name), title: 'Forgot your password?', rel: 'tooltip', :class => "button button-secondary button-right" %>
+          <% end %>
+        </div>
+        </div>
+        <div class="w-col w-col-8">
+          <h1 class="w-hidden-medium w-hidden-small w-hidden-tiny">Klaar voor actie?</h1>
+          <h3 class="w-hidden-medium w-hidden-small w-hidden-tiny">Gebruik Solliceo. Kom bij je droombaan op gesprek.</h3>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <%= f.button :submit, "Account aanmaken", class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-</div>
-</div>
