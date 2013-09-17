@@ -10,18 +10,18 @@
           
               <h4><%= viewer.company %> - <%= viewer.vacancy %> 
                 <span class="pull-right">
-                <%= link_to '<i class="icon-wrench"></i>'.html_safe, viewer, title: 'Bewerk deze sollicatie', rel: 'tooltip', data: {toggle: 'tooltip', placement: 'right'}, :id => "button_tooltip" %> 
-                <%= link_to '<i class="icon-trash"></i>'.html_safe, viewer, method: :delete, data: { confirm: 'Weet je het zeker? Deze sollicitatie wordt permanent verwijderd.' }, title: 'Verwijder deze sollicitatie', rel: 'tooltip' %>
+                <%= link_to '<i class="icon-wrench"></i>'.html_safe, viewer, title: 'Bewerk deze sollicatie', data: {toggle: 'tooltip'}, :class => "button_tooltip" %> 
+                <%= link_to '<i class="icon-trash"></i>'.html_safe, viewer, method: :delete, data: { toogle: 'tooltip', confirm: 'Weet je het zeker? Deze sollicitatie wordt permanent verwijderd.' }, title: 'Verwijder deze sollicitatie', :class => "button_tooltip" %>
                 </span>
               </h4>
             <% end %>
 
           </div>
-          <%= link_to '<i class="icon-user" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, '#user_edit_form', class: 'button button-secondary button-left', title: 'Jouw Account', rel: 'tooltip', data: {toggle: 'modal', resource: current_user, resource_name: current_user} %>
+          <%= link_to '<i class="icon-user" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, '#user_edit_form', class: 'button button-secondary button-left button_tooltip', title: 'Jouw Account', data: {toggle: 'modal', placement: 'bottom', resource: current_user, resource_name: current_user} %>
 
           <%= link_to 'Nieuwe Sollicitatie', '#new_viewer_form', class: 'button button-main', :id => "button_tooltip", data: {toggle: 'modal'} %>
           
-          <a class="button button-right button-secondary" href="http://vicancy.com/solliceo/formulier/" target="_blank" data-toggle="tooltip" title="Video aanmaken"><i class="icon-film" style="margin-left:-5px; margin-top:-1px;"></i></a>
+          <a class="button button-right button-secondary button_tooltip" href="http://vicancy.com/solliceo/formulier/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Video aanmaken"><i class="icon-film" style="margin-left:-5px; margin-top:-1px;"></i></a>
 
         </div>
       </div>

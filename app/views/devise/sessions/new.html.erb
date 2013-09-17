@@ -14,9 +14,9 @@
             <h4 class="login_remember">Onthoud mij</h4>
             <%= f.input :remember_me, label: false, :as => :boolean, input_html: { class: 'login_checkbox' } if devise_mapping.rememberable? %>
           </div>
-          <%= link_to '<i class="icon-share-alt" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_registration_path(resource_name), title: 'Sign up', rel: 'tooltip', :class => "button button-secondary button-left" %>
+          <%= link_to '<i class="icon-share-alt" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_registration_path(resource_name), title: 'Nog geen account? >> Aanmaken', :class => "button button-secondary button-left button_tooltip", data: {toggle: 'modal', placement: 'bottom'} %>
           <%= f.submit "Log in", class: "button button-main login_button" %>
-          <%= link_to '<i class="icon-flag" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_password_path(resource_name), title: 'Forgot your password?', rel: 'tooltip', :class => "button button-secondary button-right" %>
+          <%= link_to '<i class="icon-flag" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_password_path(resource_name), title: 'Wachtwoord vergeten?', :class => "button button-secondary button-right button_tooltip", data: {toggle: 'modal', placement: 'bottom'} %>
           <% end %>
         </div>
         </div>

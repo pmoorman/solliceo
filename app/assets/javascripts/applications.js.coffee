@@ -2,7 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-	$("button_tooltip").tooltip(options)
 	$('.needs_html_editor').wysihtml5()
 	$('#new_application').on 'ajax:success', (event, xhr)->
 		$('#application_form .modal-body').html(xhr.responseText)
