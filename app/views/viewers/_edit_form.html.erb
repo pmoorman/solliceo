@@ -1,7 +1,10 @@
 <%= simple_form_for(@viewer, html: { class: "form-horizontal", multipart: true}) do |f| %>
     <%= @viewer.errors.full_messages.to_sentence %>
 
-	<p>You can upload up to 4 files (*.psd/*.doc):</p>
+	<p>
+		Upload hier je CV, en andere bestanden die je mee wilt sturen naar de werkgever.<br>
+		LET OP: bestandsnaam is vereist.
+	</p>
 
 	<div class="files-list">
 		<ul>
@@ -10,13 +13,13 @@
 			    	<% if file_upload.new_record? %>
 			    		<%= f.fields_for :file_uploads, file_upload do |fu| %>
 							<div class="form-inputs">
-								<%= fu.text_field :name, placeholder: "Enter file name" %>
+								<%= fu.text_field :name, placeholder: "bestandsnaam (bijv. CV)" %>
 								<%= fu.file_field :file %>
 							</div>
 						<% end %>
 			    	<% else %>
-				    	<%= link_to "Edit", edit_viewer_file_path(@viewer, file_upload) %> | 
-				    	<%= link_to "Remove", viewer_file_path(@viewer, file_upload), method: :delete, confirm: "Are you sure?" %>
+				    	<%= link_to "Wijzigen", edit_viewer_file_path(@viewer, file_upload) %> | 
+				    	<%= link_to "Verwijderen", viewer_file_path(@viewer, file_upload), method: :delete, confirm: "Weet je het zeker?" %>
 				    	<strong><%= file_upload.name %></strong>
 				    	<%= file_upload.file_file_name %>
 				    <% end %>
@@ -29,7 +32,7 @@
 
 				<%= f.fields_for :file_uploads, @viewer.file_uploads.last do |fu| %>
 					<div class="form-inputs">
-						<%= fu.text_field :name, placeholder: "Enter file name" %>
+						<%= fu.text_field :name, placeholder: "Wijzig bestandsnaam" %>
 						<%= fu.file_field :file %>
 					</div>
 				<% end %>

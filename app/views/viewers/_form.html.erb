@@ -2,15 +2,14 @@
     <%= @viewer.errors.full_messages.to_sentence %>
 
 	<div class="form-inputs">
-		<%= f.input :company, label: 'Bedrijf', placeholder: 'bijv. Unilever, of ING' %>
-		<%= f.input :vacancy, label: 'Vacature', placeholder: "bijv. salesmanager" %>
+		<%= f.input :company, label: 'Organisatie', placeholder: 'bijv. Unilever, of ING' %>
+		<%= f.input :vacancy, label: 'Functienaam', placeholder: "bijv. salesmanager" %>
 	</div>
 	
 	<hr>
 	<p>
-		Je kunt tot 4 bestanden uploaden (*.psd/*.doc).<br>
-		Dit zijn bijvoorbeeld je CV en movitatiebrief.<br><br>
-		LET OP: bestandsnaam is vereist
+		Upload hier je CV, en andere bestanden die je mee wilt sturen naar de werkgever.<br>
+		LET OP: bestandsnaam is vereist.
 	</p>
 
 	<div class="files-list">

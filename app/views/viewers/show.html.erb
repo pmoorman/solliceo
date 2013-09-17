@@ -44,12 +44,12 @@
 
 <div class="viewer_masthead">
 	<div class="w-container">
-		<h2>Hallo <%= @viewer.company %>, mijn naam is <%= @viewer.user.name %>.
+		<h2>Hallo <%= @viewer.company %>, mijn naam is <%= @viewer.user.name %>
       <br>
     <% if @viewer.vacancy.blank? %>
-      Ik wil graag onderdeel uitmaken van uw team.
+      Ik wil graag onderdeel uitmaken van uw team
     <% else %>
-      Dit is mijn sollicitatie voor <%= @viewer.vacancy %>.
+      Dit is mijn sollicitatie voor <%= @viewer.vacancy %>
     <% end %>
     </h2>
 	</div>
@@ -63,7 +63,7 @@
           <%= image_tag @viewer.user.image(:medium), class: "profile-image", style: 'height: 150px;' %>
         </div>
       <% end %>
-      <p><strong>Contact info</strong>
+      <p><strong>Contact gegevens</strong>
 
         <!-- edit contact info -->
         <% if current_user == @viewer.user %>
@@ -90,7 +90,7 @@
     </div>
     <div class="w-col w-col-5">
       <h5><%= @viewer.title %></h5>
-      <p><em>"<%= @viewer.tagline %>"</em>
+      <p><em><%= @viewer.tagline %></em>
       </p>
     </div>
     <div class="w-col w-col-3"></div>
@@ -131,8 +131,8 @@
         <div id="file-<%= file.id %>" class="tab-pane <%== 'active' if i ==0 %>" style="text-align: center;">
           <iframe src="https://docs.google.com/gview?url=<%= file.file.url %>&embedded=true"></iframe>
           <div class="btn-group" style="margin:auto; margin-bottom: 10px;">
-            <button class="btn btn-large btn-primary" data-target="#contact-modal" data-toggle="modal">Contact Nu</button>
-            <button class="btn btn-large" data-target="#attached-files-modal" data-toggle="modal">Download CV</button>
+            <button class="btn btn-large btn-primary" data-target="#contact-modal" data-toggle="modal">Contact</button>
+            <button class="btn btn-large" data-target="#attached-files-modal" data-toggle="modal">Download</button>
           </div>
         </div>
       <% end %>
@@ -202,7 +202,7 @@
 <div id="edit-files-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Edit your files:</h3>
+    <h3 id="myModalLabel">Bewerk bestanden</h3>
   </div>
   <div class="modal-body">
 
@@ -210,7 +210,7 @@
 
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Sluiten</button>
   </div>
 </div>
 
