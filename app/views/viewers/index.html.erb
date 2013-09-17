@@ -24,6 +24,7 @@
           <a class="button button-right button-secondary button_tooltip" href="http://vicancy.com/solliceo/formulier/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Video aanmaken"><i class="icon-film" style="margin-left:-5px; margin-top:-1px;"></i></a>
 
         </div>
+        <%= link_to "Uitloggen", destroy_user_session_path, method: :delete, class: 'pull-right' %>
       </div>
       <div class="w-col w-col-8">
         <h1 class="w-hidden-medium w-hidden-small w-hidden-tiny">Klaar voor actie?</h1>
@@ -31,7 +32,7 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
 
 <div id="user_edit_form" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-header">
