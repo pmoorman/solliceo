@@ -8,7 +8,7 @@ class JobapplicationMailer < ActionMailer::Base
     @file_url = @viewer.file_uploads.first.file.url
     mail(
         :to => application.emails,
-        :subject => application.subject,
+        :subject => "Sollicitatie <%= @viewer.vacancy %> door <%= @viewer.user.name %>",
         :from => application.from,
         )
   end
