@@ -239,7 +239,7 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
   # a fix to solve the password reset problem "token invalid"
-  config.allow_insecure_token_lookup = true
+  # config.allow_insecure_token_lookup = true
 
   # Secret key required for Active Admin etc. to work on production
   if Rails.env.production?
