@@ -9,8 +9,8 @@ class ApplicationsController < ApplicationController
     if @application.valid?
       JobapplicationMailer.job_apply(@application, @viewer).deliver
       respond_to do |format|
-        format.html { redirect_to(params[:return_url], notice: 'Your application sent successfully!') }
-        format.js { render inline: "<h3>Your application sent successfully!</h3>".html_safe, locals: {application: Application.new(current_user)}}
+        format.html { redirect_to(params[:return_url], notice: 'Je sollicitatie is succesvol verstuurd!') }
+        format.js { render inline: "<h3>Je sollicitatie is succesvol verstuurd!</h3>".html_safe, locals: {application: Application.new(current_user)}}
       end
     else
       respond_to do |format|

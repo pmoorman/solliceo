@@ -1,3 +1,13 @@
+ <!-- navbar top right -->
+  <div class="navigation" style="width: 300px; height: 30px; float: right; border-bottom: 1px solid #ccc; border-left: 1px solid #ccc; background-color: white; background-image: -webkit-linear-gradient(white, #e8e1e1); background-image: -o-linear-gradient(white, #e8e1e1); background-image: linear-gradient(white, #e8e1e1);">
+    <ul class="pull-right inline">
+      <li><%= link_to 'Account', '#user_edit_form', class: 'button_tooltip', title: 'Bewerk je Account', data: {toggle: 'modal', placement: 'bottom', resource: current_user, resource_name: current_user} %></li>
+      <li class="muted">&middot;</li>
+      <li><%= link_to "Uitloggen", destroy_user_session_path, method: :delete %></li>
+    </ul>
+  </div>
+
+
 <div class="main-section">
   <div class="w-container container">
     <div class="w-row">
@@ -24,7 +34,6 @@
           <a class="button button-right button-secondary button_tooltip" href="http://vicancy.com/solliceo/formulier/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Video aanmaken"><i class="icon-film" style="margin-left:-5px; margin-top:-1px;"></i></a>
 
         </div>
-        <%= link_to "Uitloggen", destroy_user_session_path, method: :delete, class: 'pull-right' %>
       </div>
       <div class="w-col w-col-8">
         <h1 class="w-hidden-medium w-hidden-small w-hidden-tiny">Klaar voor actie?</h1>

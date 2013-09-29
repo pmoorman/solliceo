@@ -79,7 +79,7 @@
         <% end %>
 
         <% unless @viewer.user.linkedin.blank? %>
-          <a style="color:#333;" href="<%= @viewer.user.linkedin %>" target="_blank">Linkedin</a><br>
+          <a style="color:#333;" href="http://<%= @viewer.user.linkedin %>" target="_blank">Linkedin</a><br>
         <% end %>
 
         <% unless @viewer.user.twitter.blank? %>

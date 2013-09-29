@@ -5,7 +5,7 @@ class Application
   extend ActiveModel::Naming
 
   # templates
-  TEXT_TEMPLATE = 'Please, enter your text here'
+  TEXT_TEMPLATE = 'Schrijf hier je bericht. Dit wordt zichtbaar in de sollicitatie-email'
   HTML_TEMPLATE = '<h1>Resume</h1>Please, enter your text here'
 
   # attributes and validations
