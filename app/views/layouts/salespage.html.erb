@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- this is the salespage.html.erb layout file -->
   <meta charset="utf-8">
   <title>My Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "platform", :media => "all" %>
+  <%= stylesheet_link_tag    "salespage", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield :meta %>
 
-  <link rel="stylesheet" type="text/css" href="http://www.vicancy.com/solliceo/dashboarddesign/css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="http://www.vicancy.com/solliceo/dashboarddesign/css/webflow.css">
-  <link rel="stylesheet" type="text/css" href="http://www.vicancy.com/solliceo/dashboarddesign/css/solliceodashboard.webflow.css">
-
-  <style>
-  	a {
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: none;
-      color: white;
-    }
-  </style>
 </head>
 <body>
 	
@@ -33,11 +23,7 @@
 		</div>
 	</div>	
 
-
-	
-   <%= yield %>
-  
-
+  <%= yield %>
 
 	<%= render 'layouts/footer' %>
 

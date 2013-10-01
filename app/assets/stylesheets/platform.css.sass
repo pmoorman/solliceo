@@ -1,0 +1,209 @@
+@import bootstrap
+@import bootstrap-responsive
+@import webflow
+
+body
+	background-color: white
+	background-image: image-url("escheresque.png")
+	font-family: Tahoma, Geneva, sans-serif
+	color: #333
+	font-size: 12px
+	line-height: 20px
+	font-weight: 400
+
+h1 
+	margin: 43px 0px 10px
+	font-size: 38px
+	line-height: 44px
+	font-weight: 700
+
+h2
+	margin: 10px 0px
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+	font-size: 32px
+	line-height: 36px
+	font-weight: 300
+	text-shadow: none
+
+h3 
+	margin: 10px 0px
+	font-size: 24px
+	line-height: 30px
+	font-weight: 700
+
+h4 
+	margin: 10px 0px
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+	color: #555
+	font-size: 15px
+	font-weight: 300
+
+h5 
+	margin: 10px 0px
+	font-size: 14px
+	line-height: 20px
+	font-weight: 700
+
+h6
+	margin: 10px 0px
+	font-size: 12px
+	line-height: 18px
+	font-weight: 700
+
+p
+	margin-bottom: 5px
+
+a
+	text-decoration: none
+	&:hover
+		text-decoration: none
+
+.navigation
+	width: 300px
+	height: 30px
+	float: right 
+	border-bottom: 1px solid #ccc
+	border-left: 1px solid #ccc
+	border-bottom-left-radius: 5px
+	background-color: white
+	background-image: -webkit-linear-gradient(white, #e8e1e1)
+	background-image: -o-linear-gradient(white, #e8e1e1)
+	background-image: linear-gradient(white, #e8e1e1)
+	ul
+		margin-top: 4px
+		a
+			color: #777
+			&:hover
+				color: black
+
+.button
+	position: static
+	display: inline-block
+	width: 140px
+	height: 30px
+	margin: 15px auto 10px
+	padding: 4px 15px
+	float: none
+	border: 1px solid white
+	border-radius: 19px
+	background-color: #e60707
+	-webkit-transition: none
+	-o-transition: none
+	transition: none
+	color: white
+	text-align: center
+
+.button-main
+	left: 0px
+	right: 0px
+	bottom: 0px
+	height: 30px
+	margin-left: 8px
+	border-color: #8e0400
+	background-color: #8f0500
+	background-image: -webkit-linear-gradient(#ff0800, #8e0400)
+	background-image: -o-linear-gradient(#ff0800, #8e0400)
+	background-image: linear-gradient(#ff0800, #8e0400)
+	box-shadow: white 0px 0px 10px 3px
+	&:hover
+		top: 0px
+		background-image: -webkit-linear-gradient(#ff0800, #8e0400 52%)
+		background-image: -o-linear-gradient(#ff0800, #8e0400 52%)
+		background-image: linear-gradient(#ff0800, #8e0400 52%)
+		opacity: 1
+		-webkit-transform: scale(1.03)
+		-ms-transform: scale(1.03)
+		-o-transform: scale(1.03)
+		transform: scale(1.03)
+		-webkit-transition: all 100ms ease
+		-o-transition: all 100ms ease
+		transition: all 100ms ease
+		color: white
+
+.button-secondary
+	display: inline-block
+	width: 35px
+	height: 30px
+	margin-right: 0px
+	margin-left: 0px
+	clear: none
+	border-color: #aba6a6
+	background-color: #e8e1e1
+	background-image: -webkit-radial-gradient(circle at 50% 50%, #dbd5d5, #aba6a6)
+	background-image: -o-radial-gradient(circle at 50% 50%, #dbd5d5, #aba6a6)
+	background-image: radial-gradient(circle at 50% 50%, #dbd5d5, #aba6a6)
+	color: black
+
+.button-right
+	margin-right: 10px
+	float: right
+	border-color: #898989
+	background-image: -webkit-linear-gradient(#efefef, #898989)
+	background-image: -o-linear-gradient(#efefef, #898989)
+	background-image: linear-gradient(#efefef, #898989)
+	box-shadow: white 0px 0px 10px 3px
+	opacity: 1
+	color: #333
+	&:hover
+		background-image: -webkit-linear-gradient(#efefef, #898989 55%)
+		background-image: -o-linear-gradient(#efefef, #898989 55%)
+		background-image: linear-gradient(#efefef, #898989 55%)
+		-webkit-transition: all 200ms ease
+		-o-transition: all 200ms ease
+		transition: all 200ms ease
+
+.button-left
+	overflow: visible
+	margin-left: 10px
+	float: left
+	background-image: -webkit-linear-gradient(#efefef, #898989)
+	background-image: -o-linear-gradient(#efefef, #898989)
+	background-image: linear-gradient(#efefef, #898989)
+	box-shadow: white 0px 0px 10px 3px
+	color: #333
+	&:hover
+		background-image: -webkit-linear-gradient(#efefef, #898989 50%)
+		background-image: -o-linear-gradient(#efefef, #898989 50%)
+		background-image: linear-gradient(#efefef, #898989 50%)
+
+.container
+	height: 375px
+	margin-top: 120px
+	margin-bottom: 119px
+
+.dashboard
+	width: 250px
+	height: 375px
+	padding-left: 0px
+	border: 2px solid white
+	border-radius: 20px
+	background-color: #e8e1e1
+	background-image: none
+	box-shadow: #4a4848 0px 0px 50px 6px, rgba(0, 0, 0, 0.09) 0px 0px 50px 25px inset
+
+.dashboard-whitebox
+	overflow: visible
+	height: 315px
+	padding-right: 10px
+	padding-left: 10px
+	border: 1px solid #a8a3a3
+	border-radius: 20px
+	background-color: white
+	box-shadow: #a8a3a3 0px 0px 8px 0px inset
+	opacity: 1
+	-webkit-transform: none
+	-ms-transform: none
+	-o-transform: none
+	transform: none
+
+@media (max-width: 991px)
+	body
+		background-image: url(../images/P1050522.JPG)
+  
+@media (max-width: 767px)
+	body
+		background-image: url(../images/P1050522.JPG)
+
+@media (max-width: 479px)
+	body
+		background-image: url(../images/P1050522.JPG)

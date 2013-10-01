@@ -1,7 +1,13 @@
+@import bootstrap
+@import bootstrap-responsive
+@import bootstrap-wysihtml5
+@import webflow
+
 *
 	-moz-box-sizing: border-box
 	box-sizing: border-box
 body
+	margin-top: 50px
 	border-width: 1px
 	border-color: black
 	background-color: #ebf2f2
@@ -169,3 +175,62 @@ body
 		border-radius: 3px
 		background-color: white
 		box-shadow: #333 0px 0px 7px 0px
+
+// tabs styling (from old stylesheet)
+.tabs
+	list-style: none
+	padding: 0
+	margin: 0
+	display: block
+	//position: relative
+	z-index: -1
+	height: 40px
+	li
+		display: inline-block
+		padding: 0
+		margin: 0
+		height: 30px
+		background: #EEE
+		line-height: 30px
+		position: relative
+		top: 10px
+		float: left
+		&:hover
+			a
+				background-color: #F7F7F7
+			&:after 
+				border-left-color: #F7F7F7 !important
+		a
+			padding: 0 25px
+			color: #585858
+		&:not(.active)
+			border-left: 1px solid #CCC
+		&.active 
+			background: #fff
+			height: 40px
+			line-height: 40px
+			top: 0
+			&:after
+				content: ""
+				border-style: solid
+				border-width: 40px 0 0 20px
+				border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #FFF
+				position: absolute
+				z-index: 99
+				top: 0
+				right: -20px
+		&:after 
+			content: ""
+			width: 0px
+			height: 0px
+			border-style: solid
+			border-width: 30px 0 0 15px
+			border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #EEE
+			position: absolute
+			z-index: 0
+			right: -15px
+			top: 0px
+
+.tab-content
+	background: #FFF
+	padding: 10px 0px
