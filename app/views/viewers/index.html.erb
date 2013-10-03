@@ -3,7 +3,7 @@
     <div class="w-row">
       <div class="w-col w-col-4">
         <div class="w-clearfix dashboard">
-          <div class="dashboard-whitebox">
+          <div class="dashboard-whitebox" data_intro="Dashboard. Beheer en bewerk jouw sollicitaties" data_position="right">
             <h2>Dashboard</h2>
 
             <% @viewers.each do |viewer| %>
@@ -19,9 +19,9 @@
           </div>
           <%= link_to '<i class="icon-user" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, '#user_edit_form', class: 'button button-secondary button-left button_tooltip', title: 'Jouw Account', data: {toggle: 'modal', placement: 'bottom', resource: current_user, resource_name: current_user} %>
 
-          <%= link_to 'Nieuwe Sollicitatie', '#new_viewer_form', class: 'button button-main', :id => "button_tooltip", data: {toggle: 'modal'} %>
+          <%= link_to 'Nieuwe Sollicitatie', '#new_viewer_form', class: 'button button-main', data_intro: 'Nieuwe sollicitatie maken. De juiste plek om te beginnen :)', data_position: 'bottom', :id => "button_tooltip", data: {toggle: 'modal'} %>
           
-          <a class="button button-right button-secondary button_tooltip" href="http://vicancy.com/solliceo/formulier/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Video aanmaken"><i class="icon-film" style="margin-left:-5px; margin-top:-1px;"></i></a>
+          <a class="button button-right button-secondary button_tooltip" href="http://vicancy.com/solliceo/formulier/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Video aanmaken" data_intro="maak hier je video aan" data_position="right"><i class="icon-film" style="margin-left:-5px; margin-top:-1px;"></i></a>
 
         </div>
       </div>

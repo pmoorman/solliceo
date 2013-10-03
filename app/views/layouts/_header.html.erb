@@ -1,6 +1,8 @@
 <!-- navbar top right -->
-  <div class="navigation">
+  <div class="navigation" data_intro="menubalk. Beheer hier je account" data_position="bottom">
     <ul class="pull-right inline">
+    	<li><a href="#"  data-toggle="chardinjs">Help</a></li>
+    	<li class="muted">&middot;</li>
       <li><%= link_to 'Account', '#user_edit_form', class: 'button_tooltip', title: 'Bewerk je Account', data: {toggle: 'modal', placement: 'bottom', resource: current_user, resource_name: current_user} %></li>
       <li class="muted">&middot;</li>
       <li><%= link_to "Uitloggen", destroy_user_session_path, method: :delete %></li>
