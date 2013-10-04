@@ -58,11 +58,14 @@
 <div class="w-container viewer_container">
     <div class="w-row general-info-bar">
       <div class="w-col w-col-4">
-        <% unless @viewer.user.image.blank? %>
-          <div class="profile-image-section">
-            <%= image_tag @viewer.user.image(:medium), class: "profile-image", style: 'height: 150px;' %>
-          </div>
-        <% end %>
+        <div class="profile-image-section">
+          <% if @viewer.user.image.blank? # render blank profile image%>
+            <img src="http://vicancy.com/solliceo/assets/profileimage.png" class="profile-image"/>
+          <% else # render profile image%>
+            <%= image_tag @viewer.user.image(:medium), class: "profile-image" %>
+          <% end %>
+        </div>
+        
       <p><strong>Contact gegevens</strong>
 
         <!-- edit contact info -->
