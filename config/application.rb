@@ -58,6 +58,9 @@ module Solliceo
     config.assets.precompile += ['platform.css']
     config.assets.precompile += ['salespage.css']
     config.assets.precompile += ['viewer.css']
+    config.assets.precompile += ['platform.js']
+    config.assets.precompile += ['viewers.js']
+    config.assets.precompile += ['salespage.js']
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

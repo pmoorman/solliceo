@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- this is the dashboard.html.erb layout file -->
+  <meta charset="utf-8">
+  <title>My Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "platform", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "platform" %>
+  <%= csrf_meta_tags %>
+  <%= yield :meta %>
+
+</head>
+<body>
+
+  <% if user_signed_in? %>
+    <%= render 'layouts/header' %>
+  <% end %>
+
+	<div class="row">
+		<div class="span8 offset2">
+			<% flash.each do |name, msg| %>
+				<%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+			<% end %>
+		</div>
+	</div>	
+	
+  <%= yield %>
+
+	<%= render 'layouts/footer' %>
+
+</body>
+</html>
