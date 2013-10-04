@@ -67,23 +67,23 @@
 
         <!-- edit contact info -->
         <% if current_user == @viewer.user %>
-           <em><%= link_to '(bewerken)', '#user_edit_form', data: {toggle: 'modal', resource: current_user, resource_name: current_user}, style: 'color:#333;' %></li></em><br>
+           <em><%= link_to '(bewerken)', '#user_edit_form', data: {toggle: 'modal', resource: current_user, resource_name: current_user} %></li></em><br>
         <% end %>
         
         <% unless @viewer.user.email.blank? %>
-          <a style="color:#333;" href="mailto:<%= @viewer.user.email %>" target="_blank">Email</a><br>
+          <i class="icon-envelope"></i><a href="mailto:<%= @viewer.user.email %>" target="_blank">Email</a><br>
         <% end %>
 
         <% unless @viewer.user.phone.blank? %>
-          <%= @viewer.user.phone %><br>
+          <i class="icon-phone"></i><%= @viewer.user.phone %><br>
         <% end %>
 
         <% unless @viewer.user.linkedin.blank? %>
-          <a style="color:#333;" href="http://<%= @viewer.user.linkedin %>" target="_blank">Linkedin</a><br>
+          <i class="icon-linkedin-sign"></i><a href="http://<%= @viewer.user.linkedin %>" target="_blank">Linkedin</a><br>
         <% end %>
 
         <% unless @viewer.user.twitter.blank? %>
-          <a style="color:#333;" href="https://twitter.com/<%= @viewer.user.twitter %>" target="_blank">Twitter</a><br>
+          <i class="icon-twitter-sign"></i><a href="https://twitter.com/<%= @viewer.user.twitter %>" target="_blank">Twitter</a><br>
         <% end %>
 
       </p>

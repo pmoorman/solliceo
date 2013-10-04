@@ -15,6 +15,7 @@ gem 'mandrill-api'
 gem 'httpi', '~> 2.1.0'
 gem 'newrelic_rpm'
 gem 'best_in_place'
+gem 'font-awesome-rails'
 
 group :production do
 	gem 'pg'
