@@ -55,6 +55,8 @@ module Solliceo
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    # explicitly call out which files must be precompiled (don't include compiler names like .sass or .coffee)
     config.assets.precompile += ['platform.css']
     config.assets.precompile += ['salespage.css']
     config.assets.precompile += ['viewer.css']

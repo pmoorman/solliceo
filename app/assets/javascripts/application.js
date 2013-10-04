@@ -16,4 +16,5 @@
 //= require wysihtml
 //= require jquery.purr
 //= require best_in_place
+//= require bootstrap
 //= require chardinjs.min
