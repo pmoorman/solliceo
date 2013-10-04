@@ -55,12 +55,15 @@ module Solliceo
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.precompile += ['platform.css']
-    config.assets.precompile += ['salespage.css']
-    config.assets.precompile += ['viewer.css']
-    config.assets.precompile += ['platform.js.coffee']
-    config.assets.precompile += ['viewers.js.coffee']
-    config.assets.precompile += ['salespage.js.coffee']
+    
+    # precompile all css and javascript
+    config.assets.precompile += ['*.css', '*.js']
+    # config.assets.precompile += ['platform.css']
+    # config.assets.precompile += ['salespage.css']
+    # config.assets.precompile += ['viewer.css']
+    # config.assets.precompile += ['platform.js.coffee']
+    # config.assets.precompile += ['viewers.js.coffee']
+    # config.assets.precompile += ['salespage.js.coffee']
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
