@@ -58,12 +58,13 @@
 <div class="w-container viewer_container">
     <div class="w-row general-info-bar">
       <div class="w-col w-col-4">
-        <div class="profile-image-section">
+        <div class="profile-image-section edit_area">
           <% if @viewer.user.image.blank? # render blank profile image%>
             <img src="http://vicancy.com/solliceo/assets/profileimage.png" class="profile-image"/>
           <% else # render profile image%>
             <%= image_tag @viewer.user.image(:medium), class: "profile-image" %>
           <% end %>
+          <a class="edit_button btn" data-target="#user_edit_form" data-toggle="modal">Edit</a>
         </div>
         
       <p><strong>Contact gegevens</strong>
@@ -99,10 +100,11 @@
     <div class="w-col w-col-3"></div>
   </div>
   <div class="video-section">
-    <div class="w-embed w-video videoplayer" style="padding-top: 56.27659574468085%;">
+    <div class="w-embed w-video videoplayer edit_area" style="padding-top: 56.27659574468085%;">
       
       <% if @viewer.user.videoid == 0.0 %>
-        <iframe id="video" src="http://videowizard.webflow.com/" frameborder="0"></iframe>
+        <img id="video" src="http://vicancy.com/solliceo/assets/videoplayer.png"/>
+        <a class="edit_button btn" href="http://vicancy.com/solliceo/formulier/" target="_blank" style="left:10%; top:10%;">Video aanmaken</a>
       <% else %>
         <iframe src="http://player.vimeo.com/video/<%= @viewer.user.videoid %>?autoplay=0" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
       <% end %>
