@@ -15,11 +15,6 @@
             <%= f.input :password, label: false, :required => true, input_html: { class: 'w-input' } %>
             <h4>*Herhaal wachtwoord</h4>
             <%= f.input :password_confirmation, label: false, :required => true, input_html: { class: 'w-input' } %>
-            </br>
-            <h4>Upload een profielfoto</h4>
-            <%= f.input :image, label: false, input_html: { class: 'w-input' } %>
-            <h4>of gebruik een URL voor je profielfoto</h4>
-            <%= f.input :image_remote_url, label: false, placeholder: 'bijv. je LinkedIn profielfoto', input_html: { class: 'w-input' } %>
           </div>
           <%= link_to '<i class="icon-hand-right" style="margin-left:-5px; margin-top:-1px;"></i>'.html_safe, new_session_path(resource_name), title: 'Ben je al gebruiker? >> Inloggen', :class => "button button-secondary button-left button_tooltip", data: {toggle: 'modal', placement: 'bottom'} %>
           <%= f.submit "Account aanmaken", class: "button button-main login_button" %>
